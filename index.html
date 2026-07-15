@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 1813 Classic · Giants Ridge · Aug 6–9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&family=Oswald:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#04382e;
+    --augusta:#076652;
+    --fairway:#0b7a5f;
+    --masters-yellow:#f7d94c;
+    --cream:#faf6ea;
+    --cream-deep:#f1ead6;
+    --azalea:#d9628f;
+    --ink:#1e2b26;
+    --rule:#d8cfae;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Source Sans 3',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -20%, rgba(255,255,255,.07), transparent 60%),
+      linear-gradient(175deg, var(--pine) 0%, var(--augusta) 70%, #0a5a49 100%);
+    color:var(--cream);
+    text-align:center;
+    padding:84px 24px 72px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;left:0;right:0;bottom:0;height:10px;
+    background:repeating-linear-gradient(90deg, var(--masters-yellow) 0 32px, var(--pine) 32px 40px);
+  }
+  .hero .script{
+    font-family:'Pinyon Script',cursive;
+    font-size:clamp(1.6rem,4vw,2.4rem);
+    color:var(--masters-yellow);
+    display:block;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:clamp(3rem,9vw,5.6rem);
+    letter-spacing:.06em;
+    line-height:1.02;
+    text-transform:uppercase;
+  }
+  .hero .flag{
+    width:64px;height:78px;margin:26px auto 22px;display:block;
+  }
+  .hero .venue{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.32em;
+    font-size:.85rem;
+    color:var(--masters-yellow);
+  }
+  .hero .dates{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.3rem;
+    margin-top:8px;
+    color:#e8efe9;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--pine);
+    border-bottom:2px solid var(--masters-yellow);
+    display:flex;justify-content:center;flex-wrap:wrap;
+    gap:0;
+  }
+  nav a{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:.74rem;
+    color:var(--cream);
+    text-decoration:none;
+    padding:13px 18px;
+  }
+  nav a:hover, nav a:focus-visible{color:var(--masters-yellow)}
+  nav a:focus-visible{outline:2px solid var(--masters-yellow);outline-offset:-2px}
+
+  /* ---------- LAYOUT ---------- */
+  main{max-width:880px;margin:0 auto;padding:0 22px 90px}
+  section{padding-top:70px}
+  .eyebrow{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.3em;
+    font-size:.72rem;
+    color:var(--azalea);
+    margin-bottom:6px;
+  }
+  h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:clamp(1.9rem,5vw,2.6rem);
+    color:var(--augusta);
+    margin-bottom:6px;
+  }
+  .sub{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:#5b6b62;
+    margin-bottom:28px;
+  }
+  .divider{
+    display:flex;align-items:center;gap:14px;margin:22px 0 30px;
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;background:var(--rule);
+  }
+  .divider svg{flex:none}
+
+  /* ---------- DAY CARDS ---------- */
+  .day{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-radius:6px;
+    margin-bottom:26px;
+    overflow:hidden;
+    box-shadow:0 1px 0 rgba(4,56,46,.06);
+  }
+  .day-head{
+    background:var(--augusta);
+    color:var(--cream);
+    padding:14px 22px;
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .day-head h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:1.45rem;letter-spacing:.03em;
+  }
+  .day-head .tag{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.22em;font-size:.7rem;color:var(--masters-yellow);
+  }
+  .day-body{padding:22px 24px}
+  .slot{display:flex;gap:16px;padding:11px 0;border-bottom:1px dashed var(--rule)}
+  .slot:last-child{border-bottom:none}
+  .slot .time{
+    flex:none;width:88px;
+    font-family:'Oswald',sans-serif;font-size:.8rem;letter-spacing:.08em;
+    color:var(--augusta);text-transform:uppercase;padding-top:3px;
+  }
+  .slot .what strong{color:var(--pine)}
+  .slot .what .note{font-size:.92rem;color:#5b6b62;font-style:italic}
+  .pill{
+    display:inline-block;background:var(--cream-deep);border:1px solid var(--rule);
+    border-radius:999px;padding:1px 10px;font-family:'Oswald',sans-serif;
+    font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--augusta);
+    vertical-align:2px;margin-left:6px;
+  }
+
+  /* ---------- LEADERBOARD (signature) ---------- */
+  .leaderboard{
+    background:var(--pine);
+    border:3px solid #032b23;
+    border-radius:4px;
+    box-shadow:inset 0 0 0 2px rgba(247,217,76,.35), 0 10px 24px rgba(4,56,46,.18);
+    color:var(--masters-yellow);
+    font-family:'Oswald',sans-serif;
+    margin:10px 0 26px;
+  }
+  .lb-title{
+    text-align:center;padding:14px 10px 10px;
+    letter-spacing:.34em;text-transform:uppercase;font-size:.85rem;
+    border-bottom:1px solid rgba(247,217,76,.4);
+    color:var(--cream);
+  }
+  .lb-title span{color:var(--masters-yellow)}
+  .lb-row{
+    display:grid;grid-template-columns:1fr auto auto;
+    gap:10px;align-items:center;
+    padding:12px 20px;
+    border-bottom:1px solid rgba(247,217,76,.18);
+    font-size:.95rem;letter-spacing:.06em;
+  }
+  .lb-row:last-of-type{border-bottom:none}
+  .lb-row .fmt{text-transform:uppercase;color:var(--cream);font-weight:500}
+  .lb-row .fmt small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;color:#bcd2c7;text-transform:none;letter-spacing:0;font-weight:400}
+  .lb-row .course{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#9fc4b4}
+  .lb-row .pts{
+    background:var(--masters-yellow);color:var(--pine);
+    font-weight:600;padding:2px 12px;border-radius:2px;font-size:.9rem;white-space:nowrap;
+  }
+  .lb-total{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 20px;background:rgba(247,217,76,.1);
+    text-transform:uppercase;letter-spacing:.22em;font-size:.85rem;color:var(--cream);
+  }
+  .lb-total b{color:var(--masters-yellow);font-size:1.15rem;letter-spacing:.1em}
+
+  .rules-note{
+    background:#fff;border-left:4px solid var(--azalea);
+    border-radius:0 6px 6px 0;padding:16px 20px;margin:14px 0;
+    box-shadow:0 1px 0 rgba(4,56,46,.06);
+  }
+  .rules-note h4{
+    font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--augusta);margin-bottom:4px;
+  }
+  .rules-note p{font-size:.95rem}
+
+  /* ---------- COST ---------- */
+  .cost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-bottom:18px}
+  .cost-card{
+    background:#fff;border:1px solid var(--rule);border-radius:6px;
+    padding:22px;text-align:center;
+  }
+  .cost-card .label{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.22em;font-size:.7rem;color:#5b6b62;
+  }
+  .cost-card .amt{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:2.4rem;color:var(--augusta);line-height:1.1;margin:6px 0 2px;
+  }
+  .cost-card .fine{font-size:.85rem;color:#5b6b62;font-style:italic}
+  .cost-etc{font-size:.95rem;color:#4a584f}
+
+  /* ---------- PACKING ---------- */
+  .pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .pack-card{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:20px 22px}
+  .pack-card h4{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.2em;
+    font-size:.74rem;color:var(--augusta);border-bottom:1px solid var(--rule);
+    padding-bottom:8px;margin-bottom:10px;
+  }
+  .pack-card ul{list-style:none}
+  .pack-card li{
+    padding:4px 0 4px 22px;position:relative;font-size:.95rem;
+  }
+  .pack-card li::before{
+    content:"";position:absolute;left:2px;top:12px;width:9px;height:9px;
+    border:1.5px solid var(--augusta);border-radius:2px;
+  }
+  .sun{
+    margin-top:18px;background:var(--masters-yellow);border-radius:6px;
+    padding:14px 20px;font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.15rem;color:var(--pine);text-align:center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--pine);color:#bcd2c7;text-align:center;
+    padding:40px 20px;font-size:.9rem;
+  }
+  footer .script{
+    font-family:'Pinyon Script',cursive;font-size:1.7rem;color:var(--masters-yellow);
+    display:block;margin-bottom:6px;
+  }
+  a.inline{color:var(--augusta);font-weight:600}
+
+  @media (max-width:560px){
+    .slot{flex-direction:column;gap:2px}
+    .slot .time{width:auto}
+    .lb-row{grid-template-columns:1fr auto}
+    .lb-row .course{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="script">A tradition unlike any other</span>
+  <svg class="flag" viewBox="0 0 64 78" aria-hidden="true">
+    <rect x="30" y="4" width="3" height="62" rx="1.5" fill="#f7d94c"/>
+    <path d="M33 6 L58 13 L33 20 Z" fill="#f7d94c"/>
+    <ellipse cx="32" cy="70" rx="22" ry="6" fill="none" stroke="#f7d94c" stroke-width="2"/>
+  </svg>
+  <h1>The 1813<br>Classic</h1>
+  <p class="dates">Twenty players &middot; Two teams &middot; Four rounds &middot; One trophy</p>
+  <p class="venue" style="margin-top:22px">Giants Ridge &middot; Biwabik, Minnesota</p>
+  <p class="dates">Thursday, August 6 — Sunday, August 9</p>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#schedule">Schedule</a>
+  <a href="#format">Format &amp; Scoring</a>
+  <a href="#cost">Cost</a>
+  <a href="#packing">Packing</a>
+  <a href="#etiquette">Pace &amp; Betting</a>
+</nav>
+
+<main>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <p class="eyebrow">The Itinerary</p>
+    <h2>Tournament Schedule</h2>
+    <p class="sub">Play your own ball at The Quarry — it's beautiful. And hole 17 at The Legends is the best on property.</p>
+
+    <div class="day">
+      <div class="day-head"><h3>Thursday, August 6</h3><span class="tag">Arrival &amp; Draft Night</span></div>
+      <div class="day-body">
+        <div class="slot"><div class="time">Midday</div><div class="what"><strong>Drive up to Giants Ridge</strong><div class="note">About 3 hours from the Cities. Carpool assignments (Kyle, Mitch, Soren, Marcus, Jamie driving) <span class="pill">TBD</span> pending flight times.</div></div></div>
+        <div class="slot"><div class="time">4:00 PM</div><div class="what"><strong>Check in to the Villas</strong><div class="note">Three villas &middot; 4 bedrooms each &middot; sleeps 7–8 per villa.</div></div></div>
+        <div class="slot"><div class="time">7:00 PM</div><div class="what"><strong>The Draft</strong><div class="note">Two lowest handicaps are the likely captains. Straight draft — one pick per team, back and forth. No snake.</div></div></div>
+        <div class="slot"><div class="time">Evening</div><div class="what"><strong>Set Round 1 pairings</strong><div class="note">Team One names their first pairing; Team Two answers with the pair to face them. Early tee times tomorrow — early night.</div></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-head"><h3>Friday, August 7</h3><span class="tag">Rounds 1 &amp; 2 · 36 Holes</span></div>
+      <div class="day-body">
+        <div class="slot"><div class="time">7:30 AM</div><div class="what"><strong>Round 1 — The Quarry</strong> · Two-Man Best Ball<div class="note">Tee times every 10 minutes, 7:30–8:10. Pair vs. pair match play.</div></div></div>
+        <div class="slot"><div class="time">Midday</div><div class="what"><strong>Lunch at the club</strong><div class="note">Included with the daily 36-hole special.</div></div></div>
+        <div class="slot"><div class="time">1:10 PM</div><div class="what"><strong>Round 2 — The Legends</strong> · Two-Man Scramble<div class="note">Tee times every 10 minutes, 1:10–1:50. Same pairs or re-pair <span class="pill">TBD</span></div></div></div>
+        <div class="slot"><div class="time">Evening</div><div class="what"><strong>Dinner at the villas or a restaurant</strong><div class="note">Bonfire, poker, games, shooting the shit. Set pairings for Day Two.</div></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-head"><h3>Saturday, August 8</h3><span class="tag">Rounds 3 &amp; 4 · Championship Saturday</span></div>
+      <div class="day-body">
+        <div class="slot"><div class="time">8:40 AM</div><div class="what"><strong>Round 3 — The Quarry</strong> · Alternate Shot<div class="note">Tee times every 10 minutes, 8:40–9:20. Format open to a vote — could swap for another best ball or scramble.</div></div></div>
+        <div class="slot"><div class="time">Midday</div><div class="what"><strong>Lunch at the club</strong><div class="note">Included with the daily 36-hole special.</div></div></div>
+        <div class="slot"><div class="time">2:40 PM</div><div class="what"><strong>Round 4 — The Legends</strong> · Singles Match Play<div class="note">Tee times every 10 minutes, 2:40–3:20. All ten from each side go head-to-head, matched by handicap. Match vs. stroke play <span class="pill">TBD</span></div></div></div>
+        <div class="slot"><div class="time">Evening</div><div class="what"><strong>Trophy night</strong><div class="note">Dinner in or out. <strong>Clean and pack before we get drunk.</strong> Then: winners boast, and twenty boys enjoy being in one place. :)</div></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-head"><h3>Sunday, August 9</h3><span class="tag">Departure</span></div>
+      <div class="day-body">
+        <div class="slot"><div class="time">10:00 AM</div><div class="what"><strong>Checkout (really hungover)</strong><div class="note">Ride assignments home determined by flight times.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT -->
+  <section id="format">
+    <p class="eyebrow">The Competition</p>
+    <h2>Format &amp; Scoring</h2>
+    <p class="sub">Forty points on the board across four rounds. First team to 20½ wins the weekend.</p>
+
+    <div class="leaderboard" role="table" aria-label="Points by round">
+      <div class="lb-title">Official <span>Scoreboard</span> &middot; Points by Round</div>
+      <div class="lb-row" role="row"><div class="fmt">Two-Man Best Ball<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Quarry</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row" role="row"><div class="fmt">Two-Man Scramble<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Legends</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row" role="row"><div class="fmt">Alternate Shot<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Quarry</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row" role="row"><div class="fmt">Singles Match Play<small>Win 1 · Tie ½ · Loss 0, per match</small></div><div class="course">The Legends</div><div class="pts">10 PTS</div></div>
+      <div class="lb-total"><span>Total on offer &middot; First to <b>20.5</b> wins</span><b>40 PTS</b></div>
+    </div>
+
+    <div class="rules-note">
+      <h4>Live scoring on Squabbit</h4>
+      <p>All rounds will be scored and live-tracked in the <strong>Squabbit</strong> app. Download it before the weekend — the tournament will be created and shared with everyone in advance.</p>
+    </div>
+  </section>
+
+  <!-- COST -->
+  <section id="cost">
+    <p class="eyebrow">The Ledger</p>
+    <h2>Cost Breakdown</h2>
+    <p class="sub">Per person, for the whole weekend.</p>
+
+    <div class="cost-grid">
+      <div class="cost-card">
+        <div class="label">Golf · 72 Holes</div>
+        <div class="amt">$503</div>
+        <div class="fine">36-hole special ×2 days — golf, cart with GPS, range balls &amp; lunch ($230 ×2 + tax per day)</div>
+      </div>
+      <div class="cost-card">
+        <div class="label">Villas · 3 Nights</div>
+        <div class="amt">$266.20</div>
+        <div class="fine">$370.20 share minus $104 deposit already paid (Thu $600, Fri $650, Sat $650 + tax, ×3 villas)</div>
+      </div>
+    </div>
+    <p class="cost-etc"><strong>Also budget for:</strong> gas, groceries, alcohol (course, villas, and any bar runs), team and individual betting — and possibly a trophy plus matching team hats or polos, options being priced out now.</p>
+  </section>
+
+  <!-- PACKING -->
+  <section id="packing">
+    <p class="eyebrow">The Kit</p>
+    <h2>What to Pack</h2>
+    <p class="sub">Because some of you are dumb.</p>
+
+    <div class="pack-grid">
+      <div class="pack-card">
+        <h4>Golf Bag</h4>
+        <ul>
+          <li>Clubs (or ship them straight to the course — arrange with your local shop)</li>
+          <li>Balls — bring a lot, the courses are hard</li>
+          <li>Tees, glove, golf shoes</li>
+          <li>Umbrella / club cover</li>
+          <li>Range finder</li>
+          <li>Brush / club cleaner</li>
+          <li>Speaker</li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h4>Clothing</h4>
+        <ul>
+          <li>4 golf polos</li>
+          <li>2–3 pairs of golf shorts</li>
+          <li>1–2 pairs of golf pants</li>
+          <li>Lightweight pullover / quarter zip</li>
+          <li>Rain jacket &amp; rain pants (s/o Tommy)</li>
+          <li>Belt(s) and hat(s)</li>
+          <li>Slides for before/after rounds</li>
+          <li>Sneakers for restaurant/bar</li>
+          <li>5 pairs of underwear · 5+ pairs of socks</li>
+          <li>Shorts, sweats, tees &amp; hoodies to chill in</li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h4>Toiletries</h4>
+        <ul>
+          <li>Toothbrush + toothpaste</li>
+          <li>Deodorant</li>
+          <li>Shampoo / body wash</li>
+          <li><strong>Sunscreen</strong></li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h4>Food, Drink &amp; Misc</h4>
+        <ul>
+          <li>Water, alcohol &amp; snacks — coordinate closer to the trip</li>
+          <li>Breakfast things · 1–2 dinners</li>
+          <li>Phone charger &amp; portable charger</li>
+          <li>Headphones</li>
+          <li>Cards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sun">“You are not stronger than the sun.” — Bring the hat. Bring the sunscreen.</div>
+  </section>
+
+  <!-- ETIQUETTE -->
+  <section id="etiquette">
+    <p class="eyebrow">The Standard</p>
+    <h2>Pace of Play &amp; Betting</h2>
+
+    <div class="rules-note">
+      <h4>Surrendering the hole</h4>
+      <p>These are nice courses and pace matters. Higher handicappers — you won't finish every hole, and that's fine. If you're taking 8–10 strokes and the other team has clearly won the hole, pick up and move on.</p>
+    </div>
+    <div class="rules-note">
+      <h4>Betting</h4>
+      <p>The team point structure covers the weekend title only — specifics on team betting to be discussed soon. Within your individual matches, you're encouraged to bet skins or whatever else you like.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="script">See you at the Ridge</span>
+  The 1813 Classic &middot; Giants Ridge, Minnesota &middot; August 6–9
+</footer>
+
+</body>
+</html>
