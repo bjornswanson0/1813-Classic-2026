@@ -276,6 +276,28 @@
     font-size:1.15rem;color:var(--maroon-deep);text-align:center;
   }
 
+  /* ---------- PLAYERS ---------- */
+  .player-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:16px}
+  .player-card{
+    background:#fffdf6;border:1px solid var(--rule);border-radius:6px;
+    padding:20px 16px;text-align:center;
+    box-shadow:0 1px 0 rgba(91,25,28,.08);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .player-card:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(91,25,28,.15)}
+  .p-avatar{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--maroon);color:var(--gold-bright);border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;letter-spacing:.05em;
+    margin:0 auto 10px;
+  }
+  .p-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25rem;color:var(--maroon-deep)}
+  .p-meta{font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#6f5c44;margin:4px 0 8px}
+  .p-meta .hcp{display:inline-block;background:var(--maroon);color:var(--gold-bright);border-radius:2px;padding:1px 7px;margin-right:6px}
+  .p-label{font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:#8a6420;margin-bottom:2px}
+  .p-quip{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.98rem;color:#59483a;line-height:1.4}
+
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--maroon-deep);color:#d8bd90;text-align:center;
@@ -435,6 +457,7 @@
 
 <nav aria-label="Sections">
   <a href="#schedule">Schedule</a>
+  <a href="#players">The Field</a>
   <a href="#format">Format &amp; Scoring</a>
   <a href="#cost">Cost</a>
   <a href="#packing">Packing</a>
@@ -505,6 +528,161 @@
     <div class="rules-note">
       <h4>Live scoring on Squabbit</h4>
       <p>All rounds will be scored and live-tracked in the <strong>Squabbit</strong> app. Download it before the weekend — the tournament will be created and shared with everyone in advance.</p>
+    </div>
+  </section>
+
+  <!-- PLAYERS -->
+  <section id="players">
+    <p class="eyebrow">The Roster</p>
+    <h2>Meet the Field</h2>
+    <p class="sub">Twenty entrants. Two teams, drafted Thursday night. Placeholder scouting reports below — real names, measurements, and reputations arriving soon.</p>
+
+    <div class="player-grid">
+      <div class="player-card">
+        <div class="p-avatar">CM</div>
+        <h4 class="p-name">Chip McDivot</h4>
+        <div class="p-meta"><span class="hcp">HCP 8</span>6'1" · 185 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Talks to his ball. The ball has stopped listening.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">SW</div>
+        <h4 class="p-name">Sandy Wedgeworth</h4>
+        <div class="p-meta"><span class="hcp">HCP 14</span>5'10" · 200 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Has never met a bunker he didn't move into.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">BS</div>
+        <h4 class="p-name">Bogey Svensson</h4>
+        <div class="p-meta"><span class="hcp">HCP 12</span>6'3" · 210 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Named by his father. Prophetic.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">AT</div>
+        <h4 class="p-name">Albie Tross</h4>
+        <div class="p-meta"><span class="hcp">HCP 3</span>5'11" · 170 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Claims a double eagle in 2019. No witnesses.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">WT</div>
+        <h4 class="p-name">Woody Threeputt</h4>
+        <div class="p-meta"><span class="hcp">HCP 16</span>6'0" · 195 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Reads greens like they're written in a language he doesn't speak.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">SL</div>
+        <h4 class="p-name">Slice Lundqvist</h4>
+        <div class="p-meta"><span class="hcp">HCP 18</span>6'2" · 205 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Aims 40 yards left on purpose. Physics does the rest.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">MO</div>
+        <h4 class="p-name">Mulligan O'Brien</h4>
+        <div class="p-meta"><span class="hcp">HCP 11</span>5'9" · 180 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">First tee shots are just practice. House rule. His house.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">DH</div>
+        <h4 class="p-name">Duff Hazard</h4>
+        <div class="p-meta"><span class="hcp">HCP 20</span>6'4" · 230 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">A generational talent at finding water.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">PH</div>
+        <h4 class="p-name">Pin Highman</h4>
+        <div class="p-meta"><span class="hcp">HCP 6</span>5'8" · 160 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Always pin high. Rarely the right pin.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">CC</div>
+        <h4 class="p-name">Cart-Path Carl</h4>
+        <div class="p-meta"><span class="hcp">HCP 15</span>6'0" · 215 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Gets more roll than anyone in the field. Asphalt counts.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">SP</div>
+        <h4 class="p-name">Shanks Peterson</h4>
+        <div class="p-meta"><span class="hcp">HCP 17</span>5'11" · 190 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">We don't say the S-word around him anymore.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">LL</div>
+        <h4 class="p-name">Lip-Out Larsson</h4>
+        <div class="p-meta"><span class="hcp">HCP 9</span>6'1" · 175 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Owes the golf gods money, apparently.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">GG</div>
+        <h4 class="p-name">Gimme Gustafson</h4>
+        <div class="p-meta"><span class="hcp">HCP 13</span>5'10" · 185 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Considers anything inside six feet "basically in."</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">RR</div>
+        <h4 class="p-name">Rough Ryder</h4>
+        <div class="p-meta"><span class="hcp">HCP 19</span>6'2" · 220 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Sees more wildlife per round than the DNR.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">BB</div>
+        <h4 class="p-name">Breakfast-Ball Bill</h4>
+        <div class="p-meta"><span class="hcp">HCP 22</span>5'9" · 240 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Breakfast ball, lunch ball, and a little something at the turn.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">TT</div>
+        <h4 class="p-name">Tempo Tim</h4>
+        <div class="p-meta"><span class="hcp">HCP 10</span>6'0" · 178 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Current swing thought count: eleven. Simultaneously.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">YJ</div>
+        <h4 class="p-name">Yips Johansson</h4>
+        <div class="p-meta"><span class="hcp">HCP 7</span>5'7" · 155 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Putts best with his eyes closed. Genuinely.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">SS</div>
+        <h4 class="p-name">Scratch Sorenson*</h4>
+        <div class="p-meta"><span class="hcp">HCP 2*</span>6'1" · 182 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">*Self-reported. Under investigation by the Committee.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">SH</div>
+        <h4 class="p-name">Stinger Holm</h4>
+        <div class="p-meta"><span class="hcp">HCP 5</span>6'5" · 225 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Hits a 2-iron off every tee. Will not be talked out of it.</p>
+      </div>
+      <div class="player-card">
+        <div class="p-avatar">TC</div>
+        <h4 class="p-name">The Commissioner</h4>
+        <div class="p-meta"><span class="hcp">HCP 24</span>5'10" · 198 lb</div>
+        <p class="p-label">Known For</p>
+        <p class="p-quip">Doesn't keep score. Keeps receipts.</p>
+      </div>
+    </div>
+
+    <div class="rules-note">
+      <h4>Claim your card</h4>
+      <p>These profiles are placeholders. Real names, heights, weights, and what each man is <em>known for</em> are being collected — send yours in and your card gets updated before the Ridge.</p>
     </div>
   </section>
 
