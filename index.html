@@ -150,7 +150,7 @@
   /* ---------- THE FIELD ---------- */
   .field-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(128px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
     gap:14px;
     text-align:center;
   }
@@ -176,7 +176,20 @@
   }
   .golfer .g-name{
     font-family:'Oswald',sans-serif;text-transform:uppercase;
-    letter-spacing:.12em;font-size:.78rem;color:var(--maroon);
+    letter-spacing:.12em;font-size:.82rem;color:var(--maroon);
+  }
+  .golfer .g-nick{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:.95rem;color:var(--gold);margin:2px 0 6px;
+  }
+  .golfer .g-stats{
+    font-family:'Oswald',sans-serif;font-size:.68rem;
+    letter-spacing:.14em;color:#8a6d3b;text-transform:uppercase;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:5px 0;margin:0 6px 8px;
+  }
+  .golfer .g-bio{
+    font-size:.8rem;line-height:1.45;color:#5c4a3d;padding:0 8px;
   }
 
   /* ---------- DAY CARDS ---------- */
@@ -416,26 +429,26 @@
     <h2>The Field</h2>
     <p class="sub">Twenty players. Two teams. Every one of them convinced they're carrying their side.</p>
     <div class="field-grid">
-      <div class="golfer"><img src="assets/avatars/nick.jpg" alt="Nick"><div class="g-name">Nick</div></div>
-      <div class="golfer"><img src="assets/avatars/noah.jpg" alt="Noah"><div class="g-name">Noah</div></div>
-      <div class="golfer"><img src="assets/avatars/quentin.jpg" alt="Quentin"><div class="g-name">Quentin</div></div>
-      <div class="golfer"><img src="assets/avatars/soren.jpg" alt="Soren"><div class="g-name">Soren</div></div>
-      <div class="golfer"><img src="assets/avatars/tommy.jpg" alt="Tommy"><div class="g-name">Tommy</div></div>
-      <div class="golfer"><img src="assets/avatars/xavier.jpg" alt="Xavier"><div class="g-name">Xavier</div></div>
-      <div class="golfer"><img src="assets/avatars/zane.jpg" alt="Zane"><div class="g-name">Zane</div></div>
-      <div class="golfer"><img src="assets/avatars/avinoam.jpg" alt="Avinoam"><div class="g-name">Avinoam</div></div>
-      <div class="golfer"><img src="assets/avatars/curt.jpg" alt="Curt"><div class="g-name">Curt</div></div>
-      <div class="golfer"><img src="assets/avatars/delo.jpg" alt="Delo"><div class="g-name">Delo</div></div>
-      <div class="golfer"><img src="assets/avatars/drew.jpg" alt="Drew"><div class="g-name">Drew</div></div>
-      <div class="golfer"><img src="assets/avatars/graham.jpg" alt="Graham"><div class="g-name">Graham</div></div>
-      <div class="golfer"><img src="assets/avatars/jackson.jpg" alt="Jackson"><div class="g-name">Jackson</div></div>
-      <div class="golfer"><img src="assets/avatars/jamie.jpg" alt="Jamie"><div class="g-name">Jamie</div></div>
-      <div class="golfer"><img src="assets/avatars/joey.jpg" alt="Joey"><div class="g-name">Joey</div></div>
-      <div class="golfer"><img src="assets/avatars/kyle.jpg" alt="Kyle"><div class="g-name">Kyle</div></div>
-      <div class="golfer"><img src="assets/avatars/marcus.jpg" alt="Marcus"><div class="g-name">Marcus</div></div>
-      <div class="golfer"><img src="assets/avatars/matthew.jpg" alt="Matthew"><div class="g-name">Matthew</div></div>
-      <div class="golfer"><img src="assets/avatars/mitch.jpg" alt="Mitch"><div class="g-name">Mitch</div></div>
-      <div class="golfer"><img src="assets/avatars/bjorn.jpg" alt="Bjorn"><div class="g-name">Bjorn</div></div>
+      <div class="golfer"><img src="assets/avatars/nick.jpg" alt="Nick"><div class="g-name">Nick</div><div class="g-nick">&ldquo;Poopy&rdquo;</div><div class="g-stats">5'10" · 175 lbs · Age 24</div><div class="g-bio">The media team could only source a photo from 2003. Swing hasn't matured much since.</div></div>
+      <div class="golfer"><img src="assets/avatars/noah.jpg" alt="Noah"><div class="g-name">Noah</div><div class="g-nick">&ldquo;The Senator&rdquo;</div><div class="g-stats">6'1" · 190 lbs · Age 24</div><div class="g-bio">Dresses like he's accepting a nomination. Three-putts like he's filibustering.</div></div>
+      <div class="golfer"><img src="assets/avatars/quentin.jpg" alt="Quentin"><div class="g-name">Quentin</div><div class="g-nick">&ldquo;Q&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 23</div><div class="g-bio">Arrives with a bucket hat and a two-liter of Coke. Leaves with your money.</div></div>
+      <div class="golfer"><img src="assets/avatars/soren.jpg" alt="Soren"><div class="g-name">Soren</div><div class="g-nick">&ldquo;Breast&rdquo;</div><div class="g-stats">6'2" · 195 lbs · Age 24</div><div class="g-bio">Not clearly pictured in his own profile photo. Scouts remain unsure what he looks like.</div></div>
+      <div class="golfer"><img src="assets/avatars/tommy.jpg" alt="Tommy"><div class="g-name">Tommy</div><div class="g-nick">&ldquo;Goggles&rdquo;</div><div class="g-stats">5'11" · 185 lbs · Age 24</div><div class="g-bio">Wears ski goggles in August. Claims it helps him read greens. It does not.</div></div>
+      <div class="golfer"><img src="assets/avatars/xavier.jpg" alt="Xavier"><div class="g-name">Xavier</div><div class="g-nick">&ldquo;Sioux Falls&rdquo;</div><div class="g-stats">6'0" · 200 lbs · Age 24</div><div class="g-bio">The pride of South Dakota. Plays a steady game and files his taxes early.</div></div>
+      <div class="golfer"><img src="assets/avatars/zane.jpg" alt="Zane"><div class="g-name">Zane</div><div class="g-nick">&ldquo;T-Neck&rdquo;</div><div class="g-stats">5'10" · 170 lbs · Age 23</div><div class="g-bio">Photographed mid-sentence since 2019. Nobody knows what he was saying.</div></div>
+      <div class="golfer"><img src="assets/avatars/avinoam.jpg" alt="Avinoam"><div class="g-name">Avinoam</div><div class="g-nick">&ldquo;Gunter&rdquo;</div><div class="g-stats">6'3" · 210 lbs · Age 25</div><div class="g-bio">Brings a baby to the gallery for intimidation purposes. It works.</div></div>
+      <div class="golfer"><img src="assets/avatars/curt.jpg" alt="Curt"><div class="g-name">Curt</div><div class="g-nick">&ldquo;Murph Burph&rdquo;</div><div class="g-stats">6'1" · 215 lbs · Age 24</div><div class="g-bio">Dressed for a funeral — presumably your scorecard's.</div></div>
+      <div class="golfer"><img src="assets/avatars/delo.jpg" alt="Delo"><div class="g-name">Delo</div><div class="g-nick">&ldquo;The Prophet&rdquo;</div><div class="g-stats">6'0" · 230 lbs · Age 24</div><div class="g-bio">Descended from the mountain with a scarf and a short game. Speaks only in parables.</div></div>
+      <div class="golfer"><img src="assets/avatars/drew.jpg" alt="Drew"><div class="g-name">Drew</div><div class="g-nick">&ldquo;Naptime&rdquo;</div><div class="g-stats">5'11" · 180 lbs · Age 23</div><div class="g-bio">Woke up forty seconds before this photo. Will wake up forty seconds before his tee time.</div></div>
+      <div class="golfer"><img src="assets/avatars/graham.jpg" alt="Graham"><div class="g-name">Graham</div><div class="g-nick">&ldquo;G&rdquo;</div><div class="g-stats">6'0" · 175 lbs · Age 24</div><div class="g-bio">Tie-dye shirt, salt-water hair, zero fear. Drives it 300 yards in an unknown direction.</div></div>
+      <div class="golfer"><img src="assets/avatars/jackson.jpg" alt="Jackson"><div class="g-name">Jackson</div><div class="g-nick">&ldquo;The Machine&rdquo;</div><div class="g-stats">5'10" · 185 lbs · Age 24</div><div class="g-bio">The only player with a professional headshot. Also the only professional-looking golfer.</div></div>
+      <div class="golfer"><img src="assets/avatars/jamie.jpg" alt="Jamie"><div class="g-name">Jamie</div><div class="g-nick">&ldquo;Sir James&rdquo;</div><div class="g-stats">6'0" · 185 lbs · Age 24</div><div class="g-bio">Knighted at an undisclosed stadium. Insists on honors at every tee.</div></div>
+      <div class="golfer"><img src="assets/avatars/joey.jpg" alt="Joey"><div class="g-name">Joey</div><div class="g-nick">&ldquo;Joeyyyy&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 23</div><div class="g-bio">Last seen at a rave at 4 a.m. First on the tee at 7 a.m. Same outfit.</div></div>
+      <div class="golfer"><img src="assets/avatars/kyle.jpg" alt="Kyle"><div class="g-name">Kyle</div><div class="g-nick">&ldquo;Kyky&rdquo;</div><div class="g-stats">6'1" · 195 lbs · Age 24</div><div class="g-bio">Screams at concerts, whispers to his putter. Both ignore him.</div></div>
+      <div class="golfer"><img src="assets/avatars/marcus.jpg" alt="Marcus"><div class="g-name">Marcus</div><div class="g-nick">&ldquo;Cus&rdquo;</div><div class="g-stats">5'11" · 190 lbs · Age 24</div><div class="g-bio">Every known photo of him was taken in a dimly lit basement. So was his handicap.</div></div>
+      <div class="golfer"><img src="assets/avatars/matthew.jpg" alt="Matthew"><div class="g-name">Matthew</div><div class="g-nick">&ldquo;Lake Boy&rdquo;</div><div class="g-stats">6'2" · 200 lbs · Age 24</div><div class="g-bio">Refuses to wear a shirt within 500 feet of open water. The course has four ponds.</div></div>
+      <div class="golfer"><img src="assets/avatars/mitch.jpg" alt="Mitch"><div class="g-name">Mitch</div><div class="g-nick">&ldquo;Ski-U-Mah&rdquo;</div><div class="g-stats">5'10" · 180 lbs · Age 24</div><div class="g-bio">Gophers hat welded on. Bleeds maroon and gold, which is convenient for the theme.</div></div>
+      <div class="golfer"><img src="assets/avatars/bjorn.jpg" alt="Bjorn"><div class="g-name">Bjorn</div><div class="g-nick">&ldquo;The Commissioner&rdquo;</div><div class="g-stats">6'2" · 205 lbs · Age 25</div><div class="g-bio">Built the website, wrote the rules, seeded the teams. Somehow still in the good group.</div></div>
     </div>
   </section>
 
