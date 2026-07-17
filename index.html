@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&family=Oswald:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<meta property="og:title" content="The 1813 Classic — Giants Ridge · Aug 6–9, 2026">
+<meta property="og:description" content="Four days. Twenty boys. Two teams. The losers buy the food. Schedule, roster, format, and the live leaderboard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bjornswanson0.github.io/1813-Classic-2026/">
+<meta property="og:image" content="https://bjornswanson0.github.io/1813-Classic-2026/assets/the-field.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bjornswanson0.github.io/1813-Classic-2026/assets/the-field.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -417,6 +424,45 @@
     .lb-row:hover .pts{background:var(--gold-bright);transform:scale(1.06)}
   }
 
+
+  /* anchor offset under sticky nav */
+  section{scroll-margin-top:58px}
+
+  /* mobile nav: single scrollable row */
+  @media (max-width:640px){
+    nav{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+        -webkit-overflow-scrolling:touch;scrollbar-width:none}
+    nav::-webkit-scrollbar{display:none}
+    nav a{flex:none}
+  }
+  nav a.active{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)}
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown{margin:30px auto 0;display:flex;justify-content:center;align-items:flex-start;gap:0}
+  .cd-cell{padding:0 18px;text-align:center;position:relative}
+  .cd-cell+.cd-cell::before{
+    content:"";position:absolute;left:0;top:8px;bottom:10px;
+    width:1px;background:rgba(217,166,46,.35);
+  }
+  .cd-num{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(2rem,6vw,2.9rem);line-height:1;color:var(--gold-bright);
+    font-variant-numeric:tabular-nums;
+  }
+  .cd-label{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.28em;font-size:.62rem;color:var(--gold);margin-top:6px;
+  }
+  .cd-caption{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.05rem;color:#f2e6cf;text-align:center;margin-top:12px;
+  }
+  .cd-live{
+    font-family:'Pinyon Script',cursive;font-size:clamp(1.6rem,5vw,2.1rem);
+    color:var(--gold-bright);text-align:center;margin-top:26px;
+  }
+  @media (max-width:420px){.cd-cell{padding:0 10px}}
+
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--maroon-deep);color:#d8bd90;text-align:center;
@@ -501,6 +547,14 @@
   <span class="script">A tradition unlike any other</span>
   <h1>The 1813 Classic</h1>
   <p class="dates">Twenty players &middot; Two teams &middot; Four rounds &middot; One trophy</p>
+  <div class="countdown" id="countdown" hidden>
+    <div class="cd-cell"><div class="cd-num" id="cd-d">–</div><div class="cd-label">Days</div></div>
+    <div class="cd-cell"><div class="cd-num" id="cd-h">–</div><div class="cd-label">Hours</div></div>
+    <div class="cd-cell"><div class="cd-num" id="cd-m">–</div><div class="cd-label">Min</div></div>
+    <div class="cd-cell"><div class="cd-num" id="cd-s">–</div><div class="cd-label">Sec</div></div>
+  </div>
+  <p class="cd-caption" id="cd-caption" hidden>Until the Draft &middot; Thursday, 7:00 PM</p>
+  <p class="cd-live" id="cd-live" hidden>The Classic is underway.</p>
   <p class="venue">Giants Ridge &middot; Biwabik, Minnesota</p>
   <p class="dates">Thursday, August 6 — Sunday, August 9</p>
   <figure class="field-photo">
@@ -588,26 +642,26 @@
     <h2>The Field</h2>
     <p class="sub">Twenty players. Two teams. Every one of them convinced they're carrying their side.</p>
     <div class="field-grid">
-      <div class="golfer"><img src="assets/avatars/nick.jpg" alt="Nick"><div class="g-name">Nick</div><div class="g-nick">&ldquo;Poopy&rdquo;</div><div class="g-stats">5'10" · 200 lbs · Age 26</div><div class="g-bio">Father of Henry, age six. Answers to Poopy. Also answers to Daddy. Nobody questions either anymore.</div></div>
-      <div class="golfer"><img src="assets/avatars/noah.jpg" alt="Noah"><div class="g-name">Noah</div><div class="g-nick">&ldquo;Daddy Deloitte&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 24</div><div class="g-bio">The model citizen of the group. Built like a brick shithouse. MBA incoming — Daddy Deloitte provides.</div></div>
-      <div class="golfer"><img src="assets/avatars/quentin.jpg" alt="Quentin"><div class="g-name">Quentin</div><div class="g-nick">&ldquo;Q&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 23</div><div class="g-bio">A menace to society. Rides motorcycles, lives in San Antonio — occasionally in his car. Has finished an Ironman and will mention it.</div></div>
-      <div class="golfer"><img src="assets/avatars/soren.jpg" alt="Soren"><div class="g-name">Soren</div><div class="g-nick">&ldquo;The Breast&rdquo;</div><div class="g-stats">6'2" · 195 lbs · Age 24</div><div class="g-bio">A certified playboy. Also answers to Breast or Bresticle, depending on the formality of the occasion.</div></div>
-      <div class="golfer"><img src="assets/avatars/tommy.jpg" alt="Tommy"><div class="g-name">Tommy</div><div class="g-nick">&ldquo;Piggs&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 24</div><div class="g-bio">Duluth's finest. Also answers to T. Loves raves, house music, and golfing with the boys. Will die for the boys.</div></div>
-      <div class="golfer"><img src="assets/avatars/xavier.jpg" alt="Xavier"><div class="g-name">Xavier</div><div class="g-nick">&ldquo;Xav&rdquo;</div><div class="g-stats">6'0" · 200 lbs · Age 24</div><div class="g-bio">Sioux Falls born and raised. Loves beers, booze, and is in a committed relationship with aerospace engineering.</div></div>
-      <div class="golfer"><img src="assets/avatars/zane.jpg" alt="Zane"><div class="g-name">Zane</div><div class="g-nick">&ldquo;T-Neck&rdquo;</div><div class="g-stats">5'10" · 170 lbs · Age 23</div><div class="g-bio">Born in Egypt, raised in rich-kid-town Minnesota. Has a sick house on Lake Minnetonka that the boys treat as their own.</div></div>
-      <div class="golfer"><img src="assets/avatars/avinoam.jpg" alt="Avinoam"><div class="g-name">Avinoam</div><div class="g-nick">&ldquo;Gunter&rdquo;</div><div class="g-stats">6'3" · 210 lbs · Age 25</div><div class="g-bio">Super tall, super huge, no kid — just a super sweaty man who loves being weird as hell.</div></div>
-      <div class="golfer"><img src="assets/avatars/curt.jpg" alt="Curt"><div class="g-name">Curt</div><div class="g-nick">&ldquo;Curt&rdquo;</div><div class="g-stats">6'1" · 215 lbs · Age 24</div><div class="g-bio">Bearded and grumpy. Now a Vice President at his firm, making a lot of money and still not smiling.</div></div>
-      <div class="golfer"><img src="assets/avatars/delo.jpg" alt="Delo"><div class="g-name">Delo</div><div class="g-nick">&ldquo;Delo&rdquo;</div><div class="g-stats">6'0" · 230 lbs · Age 24</div><div class="g-bio">His nickname is just Delo. Loves house music and drugs — the order depends on the weekend.</div></div>
-      <div class="golfer"><img src="assets/avatars/drew.jpg" alt="Drew"><div class="g-name">Drew</div><div class="g-nick">&ldquo;Gali&rdquo;</div><div class="g-stats">5'11" · 180 lbs · Age 23</div><div class="g-bio">A DJ, and the sweetest man alive. Loves to poop his pants.</div></div>
-      <div class="golfer"><img src="assets/avatars/graham.jpg" alt="Graham"><div class="g-name">Graham</div><div class="g-nick">&ldquo;G&rdquo;</div><div class="g-stats">5'7" · 175 lbs · Age 24</div><div class="g-bio">A certified menace. Short king, absolutely jacked. Drives it 300 yards in an unknown direction.</div></div>
-      <div class="golfer"><img src="assets/avatars/jackson.jpg" alt="Jackson"><div class="g-name">Jackson</div><div class="g-nick">&ldquo;Stroh&rdquo;</div><div class="g-stats">6'2" · 185 lbs · Age 24</div><div class="g-bio">A tall stud golfer out of Green Bay. Exclusively dates women with large chests. We respect the consistency.</div></div>
-      <div class="golfer"><img src="assets/avatars/jamie.jpg" alt="Jamie"><div class="g-name">Jamie</div><div class="g-nick">&ldquo;James&rdquo;</div><div class="g-stats">6'0" · 185 lbs · Age 24</div><div class="g-bio">A chiropractor who acts 40 with four kids already. Annoyingly good at golf.</div></div>
-      <div class="golfer"><img src="assets/avatars/joey.jpg" alt="Joey"><div class="g-name">Joey</div><div class="g-nick">&ldquo;Joeyyyy&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 23</div><div class="g-bio">DJ by night, tech sales by day — makes bread doing both. Sucks at golf but houses booze at a professional level.</div></div>
-      <div class="golfer"><img src="assets/avatars/kyle.jpg" alt="Kyle"><div class="g-name">Kyle</div><div class="g-nick">&ldquo;El Pres&rdquo;</div><div class="g-stats">6'1" · 195 lbs · Age 24</div><div class="g-bio">President and Commissioner of the tournament and the fraternity. That is all you need to know. Also a doctor.</div></div>
-      <div class="golfer"><img src="assets/avatars/marcus.jpg" alt="Marcus"><div class="g-name">Marcus</div><div class="g-nick">&ldquo;Cus&rdquo;</div><div class="g-stats">5'11" · 190 lbs · Age 24</div><div class="g-bio">In love with golf, but his true romance is Culver&rsquo;s &mdash; a relationship scouts describe as &ldquo;unsettlingly physical.&rdquo; Has been known to bring a ButterBurger to date night. His girlfriend never agreed to the throuple.</div></div>
-      <div class="golfer"><img src="assets/avatars/matthew.jpg" alt="Matthew"><div class="g-name">Matthew</div><div class="g-nick">&ldquo;Kini&rdquo;</div><div class="g-stats">6'2" · 200 lbs · Age 24</div><div class="g-bio">A finance daddy working in PE. Passions include dating women and doing bags.</div></div>
-      <div class="golfer"><img src="assets/avatars/mitch.jpg" alt="Mitch"><div class="g-name">Mitch</div><div class="g-nick">&ldquo;Mitch&rdquo;</div><div class="g-stats">5'10" · 180 lbs · Age 24</div><div class="g-bio">A kind soul from Minnetonka who wishes he were better at golf — good enough to beat Bjorn, specifically. He never does, though.</div></div>
-      <div class="golfer"><img src="assets/avatars/bjorn.jpg" alt="Bjorn"><div class="g-name">Bjorn</div><div class="g-nick">&ldquo;Sandbagger&rdquo;</div><div class="g-stats">6'5" · 210 lbs · Age 25</div><div class="g-bio">A Scandinavian psychopath who hates golf but loves his friends. Here for the boys, not the birdies.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/nick.jpg" alt="Nick"><div class="g-name">Nick</div><div class="g-nick">&ldquo;Poopy&rdquo;</div><div class="g-stats">5'10" · 200 lbs · Age 26</div><div class="g-bio">Father of Henry, age six. Answers to Poopy. Also answers to Daddy. Nobody questions either anymore.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/noah.jpg" alt="Noah"><div class="g-name">Noah</div><div class="g-nick">&ldquo;Daddy Deloitte&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 24</div><div class="g-bio">The model citizen of the group. Built like a brick shithouse. MBA incoming — Daddy Deloitte provides.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/quentin.jpg" alt="Quentin"><div class="g-name">Quentin</div><div class="g-nick">&ldquo;Q&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 23</div><div class="g-bio">A menace to society. Rides motorcycles, lives in San Antonio — occasionally in his car. Has finished an Ironman and will mention it.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/soren.jpg" alt="Soren"><div class="g-name">Soren</div><div class="g-nick">&ldquo;The Breast&rdquo;</div><div class="g-stats">6'2" · 195 lbs · Age 24</div><div class="g-bio">A certified playboy. Also answers to Breast or Bresticle, depending on the formality of the occasion.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/tommy.jpg" alt="Tommy"><div class="g-name">Tommy</div><div class="g-nick">&ldquo;Piggs&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 24</div><div class="g-bio">Duluth's finest. Also answers to T. Loves raves, house music, and golfing with the boys. Will die for the boys.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/xavier.jpg" alt="Xavier"><div class="g-name">Xavier</div><div class="g-nick">&ldquo;Xav&rdquo;</div><div class="g-stats">6'0" · 200 lbs · Age 24</div><div class="g-bio">Sioux Falls born and raised. Loves beers, booze, and is in a committed relationship with aerospace engineering.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/zane.jpg" alt="Zane"><div class="g-name">Zane</div><div class="g-nick">&ldquo;T-Neck&rdquo;</div><div class="g-stats">5'10" · 170 lbs · Age 23</div><div class="g-bio">Born in Egypt, raised in rich-kid-town Minnesota. Has a sick house on Lake Minnetonka that the boys treat as their own.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/avinoam.jpg" alt="Avinoam"><div class="g-name">Avinoam</div><div class="g-nick">&ldquo;Gunter&rdquo;</div><div class="g-stats">6'3" · 210 lbs · Age 25</div><div class="g-bio">Super tall, super huge, no kid — just a super sweaty man who loves being weird as hell.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/curt.jpg" alt="Curt"><div class="g-name">Curt</div><div class="g-nick">&ldquo;Curt&rdquo;</div><div class="g-stats">6'1" · 215 lbs · Age 24</div><div class="g-bio">Bearded and grumpy. Now a Vice President at his firm, making a lot of money and still not smiling.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/delo.jpg" alt="Delo"><div class="g-name">Delo</div><div class="g-nick">&ldquo;Delo&rdquo;</div><div class="g-stats">6'0" · 230 lbs · Age 24</div><div class="g-bio">His nickname is just Delo. Loves house music and drugs — the order depends on the weekend.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/drew.jpg" alt="Drew"><div class="g-name">Drew</div><div class="g-nick">&ldquo;Gali&rdquo;</div><div class="g-stats">5'11" · 180 lbs · Age 23</div><div class="g-bio">A DJ, and the sweetest man alive. Loves to poop his pants.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/graham.jpg" alt="Graham"><div class="g-name">Graham</div><div class="g-nick">&ldquo;G&rdquo;</div><div class="g-stats">5'7" · 175 lbs · Age 24</div><div class="g-bio">A certified menace. Short king, absolutely jacked. Drives it 300 yards in an unknown direction.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/jackson.jpg" alt="Jackson"><div class="g-name">Jackson</div><div class="g-nick">&ldquo;Stroh&rdquo;</div><div class="g-stats">6'2" · 185 lbs · Age 24</div><div class="g-bio">A tall stud golfer out of Green Bay. Exclusively dates women with large chests. We respect the consistency.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/jamie.jpg" alt="Jamie"><div class="g-name">Jamie</div><div class="g-nick">&ldquo;James&rdquo;</div><div class="g-stats">6'0" · 185 lbs · Age 24</div><div class="g-bio">A chiropractor who acts 40 with four kids already. Annoyingly good at golf.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/joey.jpg" alt="Joey"><div class="g-name">Joey</div><div class="g-nick">&ldquo;Joeyyyy&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 23</div><div class="g-bio">DJ by night, tech sales by day — makes bread doing both. Sucks at golf but houses booze at a professional level.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/kyle.jpg" alt="Kyle"><div class="g-name">Kyle</div><div class="g-nick">&ldquo;El Pres&rdquo;</div><div class="g-stats">6'1" · 195 lbs · Age 24</div><div class="g-bio">President and Commissioner of the tournament and the fraternity. That is all you need to know. Also a doctor.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/marcus.jpg" alt="Marcus"><div class="g-name">Marcus</div><div class="g-nick">&ldquo;Cus&rdquo;</div><div class="g-stats">5'11" · 190 lbs · Age 24</div><div class="g-bio">In love with golf, but his true romance is Culver&rsquo;s &mdash; a relationship scouts describe as &ldquo;unsettlingly physical.&rdquo; Has been known to bring a ButterBurger to date night. His girlfriend never agreed to the throuple.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/matthew.jpg" alt="Matthew"><div class="g-name">Matthew</div><div class="g-nick">&ldquo;Kini&rdquo;</div><div class="g-stats">6'2" · 200 lbs · Age 24</div><div class="g-bio">A finance daddy working in PE. Passions include dating women and doing bags.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/mitch.jpg" alt="Mitch"><div class="g-name">Mitch</div><div class="g-nick">&ldquo;Mitch&rdquo;</div><div class="g-stats">5'10" · 180 lbs · Age 24</div><div class="g-bio">A kind soul from Minnetonka who wishes he were better at golf — good enough to beat Bjorn, specifically. He never does, though.</div></div>
+      <div class="golfer"><img loading="lazy" src="assets/avatars/bjorn.jpg" alt="Bjorn"><div class="g-name">Bjorn</div><div class="g-nick">&ldquo;Sandbagger&rdquo;</div><div class="g-stats">6'5" · 210 lbs · Age 25</div><div class="g-bio">A Scandinavian psychopath who hates golf but loves his friends. Here for the boys, not the birdies.</div></div>
     </div>
   </section>
 
@@ -802,5 +856,57 @@
 })();
 </script>
 
+
+<script>
+(function(){
+  // Countdown to the Draft — Thu Aug 6, 2026, 7:00 PM CDT
+  var draft = new Date("2026-08-06T19:00:00-05:00").getTime();
+  var over  = new Date("2026-08-09T23:59:00-05:00").getTime();
+  var wrap=document.getElementById("countdown"),
+      cap=document.getElementById("cd-caption"),
+      live=document.getElementById("cd-live"),
+      d=document.getElementById("cd-d"),h=document.getElementById("cd-h"),
+      m=document.getElementById("cd-m"),s=document.getElementById("cd-s");
+  if(!wrap) return;
+  function pad(n){return n<10?"0"+n:""+n}
+  function tick(){
+    var now=Date.now(), diff=draft-now;
+    if(diff<=0){
+      wrap.hidden=true; cap.hidden=true;
+      live.hidden=false;
+      live.textContent = now>over ? "See you in 2027." : "The Classic is underway.";
+      return;
+    }
+    wrap.hidden=false; cap.hidden=false;
+    d.textContent=Math.floor(diff/86400000);
+    h.textContent=pad(Math.floor(diff/3600000)%24);
+    m.textContent=pad(Math.floor(diff/60000)%60);
+    s.textContent=pad(Math.floor(diff/1000)%60);
+    setTimeout(tick, 1000-(now%1000));
+  }
+  tick();
+
+  // Scrollspy — highlight current section in the nav
+  var links=Array.prototype.slice.call(document.querySelectorAll("nav a[href^='#']"));
+  var map={};
+  links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.remove("active")});
+          var a=map[e.target.id];
+          if(a){a.classList.add("active");
+            if(window.innerWidth<=640) a.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});
+          }
+        }
+      });
+    },{rootMargin:"-40% 0px -55% 0px"});
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id); if(el) io.observe(el);
+    });
+  }
+})();
+</script>
 </body>
 </html>
