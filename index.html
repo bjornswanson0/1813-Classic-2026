@@ -239,6 +239,38 @@
     vertical-align:2px;margin-left:6px;
   }
 
+  /* ---------- CALENDAR STRIP ---------- */
+  .cal-strip{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;
+  }
+  .cal-day{
+    cursor:pointer;font-family:inherit;
+    background:#fffdf6;border:1px solid var(--rule);border-radius:6px;
+    padding:10px 4px 9px;text-align:center;
+    box-shadow:0 1px 0 rgba(91,25,28,.08);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cal-day:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(91,25,28,.14)}
+  .cal-day:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .cal-dow{display:block;font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .cal-num{display:block;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2rem;line-height:1.15;color:var(--maroon)}
+  .cal-tag{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.84rem;color:#6f5c44;line-height:1.25}
+  .cal-day[aria-selected="true"]{
+    background:var(--maroon);border-color:var(--maroon-deep);
+    box-shadow:0 6px 14px rgba(61,13,16,.3);
+  }
+  .cal-day[aria-selected="true"] .cal-dow{color:var(--gold-bright)}
+  .cal-day[aria-selected="true"] .cal-num{color:var(--parchment)}
+  .cal-day[aria-selected="true"] .cal-tag{color:#e8d5ae}
+  .day[hidden]{display:none}
+  .day.cal-active{animation:dayIn .28s ease}
+  @keyframes dayIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (max-width:560px){
+    .cal-strip{gap:7px}
+    .cal-tag{display:none}
+    .cal-num{font-size:1.6rem}
+  }
+
   /* ---------- LEADERBOARD ---------- */
   .leaderboard{
     background:var(--maroon-deep);
@@ -475,7 +507,14 @@
     <h2>Tournament Schedule</h2>
     <p class="sub">Play your own ball at The Quarry — it's beautiful. And hole 17 at The Legends is the best on property.</p>
 
-    <div class="day">
+    <div class="cal-strip" role="tablist" aria-label="August 2026 — pick a day">
+      <button class="cal-day" role="tab" id="tab-thu" data-day="thu" aria-selected="true" aria-controls="day-thu"><span class="cal-dow">Thu</span><span class="cal-num">6</span><span class="cal-tag">Arrival &amp; Draft</span></button>
+      <button class="cal-day" role="tab" id="tab-fri" data-day="fri" aria-selected="false" aria-controls="day-fri"><span class="cal-dow">Fri</span><span class="cal-num">7</span><span class="cal-tag">Rounds 1 &amp; 2</span></button>
+      <button class="cal-day" role="tab" id="tab-sat" data-day="sat" aria-selected="false" aria-controls="day-sat"><span class="cal-dow">Sat</span><span class="cal-num">8</span><span class="cal-tag">Rounds 3 &amp; 4</span></button>
+      <button class="cal-day" role="tab" id="tab-sun" data-day="sun" aria-selected="false" aria-controls="day-sun"><span class="cal-dow">Sun</span><span class="cal-num">9</span><span class="cal-tag">Departure</span></button>
+    </div>
+
+    <div class="day" id="day-thu" role="tabpanel" aria-labelledby="tab-thu">
       <div class="day-head"><h3>Thursday, August 6</h3><span class="tag">Arrival &amp; Draft Night</span></div>
       <div class="day-body">
         <div class="slot"><div class="time">Midday</div><div class="what"><strong>Drive up to Giants Ridge</strong><div class="note">About 3 hours from the Cities. Carpool assignments (Kyle, Mitch, Soren, Marcus, Jamie driving) <span class="pill">TBD</span> pending flight times.</div></div></div>
@@ -485,7 +524,7 @@
       </div>
     </div>
 
-    <div class="day">
+    <div class="day" id="day-fri" role="tabpanel" aria-labelledby="tab-fri">
       <div class="day-head"><h3>Friday, August 7</h3><span class="tag">Rounds 1 &amp; 2 · 36 Holes</span></div>
       <div class="day-body">
         <div class="slot"><div class="time">7:30 AM</div><div class="what"><strong>Round 1 — The Quarry</strong> · Two-Man Best Ball<div class="note">Tee times every 10 minutes, 7:30–8:10. Pair vs. pair match play.</div></div></div>
@@ -495,7 +534,7 @@
       </div>
     </div>
 
-    <div class="day">
+    <div class="day" id="day-sat" role="tabpanel" aria-labelledby="tab-sat">
       <div class="day-head"><h3>Saturday, August 8</h3><span class="tag">Rounds 3 &amp; 4 · Championship Saturday</span></div>
       <div class="day-body">
         <div class="slot"><div class="time">8:40 AM</div><div class="what"><strong>Round 3 — The Quarry</strong> · Alternate Shot<div class="note">Tee times every 10 minutes, 8:40–9:20. Format open to a vote — could swap for another best ball or scramble.</div></div></div>
@@ -505,7 +544,7 @@
       </div>
     </div>
 
-    <div class="day">
+    <div class="day" id="day-sun" role="tabpanel" aria-labelledby="tab-sun">
       <div class="day-head"><h3>Sunday, August 9</h3><span class="tag">Departure</span></div>
       <div class="day-body">
         <div class="slot"><div class="time">10:00 AM</div><div class="what"><strong>Checkout (really hungover)</strong><div class="note">Ride assignments home determined by flight times.</div></div></div>
@@ -634,6 +673,45 @@
   <span class="script">See you at the Ridge</span>
   The 1813 Classic &middot; Giants Ridge, Minnesota &middot; Est. 2026 &middot; August 6–9
 </footer>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.cal-day'));
+  var days = Array.prototype.slice.call(document.querySelectorAll('#schedule .day'));
+  if (!tabs.length || !days.length) return;
+
+  function select(key, focus){
+    tabs.forEach(function(t){
+      var on = t.dataset.day === key;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      if (on && focus) t.focus();
+    });
+    days.forEach(function(d){
+      var on = d.id === 'day-' + key;
+      d.hidden = !on;
+      d.classList.toggle('cal-active', on);
+    });
+  }
+
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t.dataset.day); });
+    t.addEventListener('keydown', function(e){
+      var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+      if (next === null) return;
+      e.preventDefault();
+      var target = tabs[(next + tabs.length) % tabs.length];
+      select(target.dataset.day, true);
+    });
+  });
+
+  // During trip week, open the current day; otherwise start on Thursday.
+  var byDate = {6:'thu', 7:'fri', 8:'sat', 9:'sun'};
+  var now = new Date();
+  var start = (now.getFullYear() === 2026 && now.getMonth() === 7 && byDate[now.getDate()]) || 'thu';
+  select(start);
+})();
+</script>
 
 </body>
 </html>
