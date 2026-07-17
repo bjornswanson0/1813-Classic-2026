@@ -324,6 +324,11 @@
     text-transform:uppercase;letter-spacing:.22em;font-size:.85rem;color:var(--parchment);
   }
   .lb-total b{color:var(--gold-bright);font-size:1.15rem;letter-spacing:.1em}
+  .lb-embed iframe{
+    display:block;width:100%;min-height:540px;border:4px solid var(--gold);
+    outline:1px solid var(--maroon-deep);border-radius:4px;background:#fffdf6;
+    box-shadow:0 10px 24px rgba(61,13,16,.2);
+  }
 
   .rules-note{
     background:#fffdf6;border-left:4px solid var(--gold);
@@ -499,6 +504,7 @@
   <a href="#schedule">Schedule</a>
   <a href="#field">The Field</a>
   <a href="#format">Format &amp; Scoring</a>
+  <a href="#leaderboard">Leaderboard</a>
   <a href="#cost">Cost</a>
   <a href="#packing">Packing</a>
   <a href="#etiquette">Pace &amp; Betting</a>
@@ -613,6 +619,32 @@
     <div class="rules-note">
       <h4>Live scoring on Squabbit</h4>
       <p>All rounds will be scored and live-tracked in the <strong>Squabbit</strong> app. Download it before the weekend — the tournament will be created and shared with everyone in advance.</p>
+    </div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section id="leaderboard">
+    <p class="eyebrow">The Standings</p>
+    <h2>Live Leaderboard</h2>
+    <p class="sub">Powered by Squabbit. This board goes live when the first tee ball drops on Thursday, August 6.</p>
+
+    <div class="lb-embed" id="squabbit-embed">
+      <!-- SQUABBIT EMBED GOES HERE:
+           When the tournament is created in the Squabbit app, replace the
+           placeholder scoreboard below with the embed snippet from the app,
+           e.g. <iframe src="SQUABBIT_EMBED_URL" loading="lazy" title="1813 Classic live leaderboard"></iframe>
+           The iframe styling is already in the stylesheet (.lb-embed iframe). -->
+      <div class="leaderboard" role="table" aria-label="Team standings — awaiting the draft">
+        <div class="lb-title">1813 Classic <span>Live Standings</span></div>
+        <div class="lb-row" role="row"><div class="fmt">Team One<small>Roster drafted Thursday night</small></div><div class="course">Captain TBD</div><div class="pts">0 PTS</div></div>
+        <div class="lb-row" role="row"><div class="fmt">Team Two<small>Roster drafted Thursday night</small></div><div class="course">Captain TBD</div><div class="pts">0 PTS</div></div>
+        <div class="lb-total"><span>First to <b>20.5</b> takes the trophy</span><b>AUG 6</b></div>
+      </div>
+    </div>
+
+    <div class="rules-note">
+      <h4>Waiting on the draft</h4>
+      <p>The live Squabbit board will be embedded right here once the tournament is created in the app. Until then: everyone is tied for first, and everyone is playing the best golf of their life in their head.</p>
     </div>
   </section>
 
