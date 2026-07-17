@@ -1,0 +1,14 @@
+{
+  "name": "The 1813 Classic",
+  "short_name": "1813 Classic",
+  "description": "The 1813 Classic — Giants Ridge, Biwabik MN, August 6–9, 2026",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#3d0d10",
+  "theme_color": "#5b191c",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
