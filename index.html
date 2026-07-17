@@ -374,6 +374,34 @@
     font-size:1.15rem;color:var(--maroon-deep);text-align:center;
   }
 
+  /* ---------- HOVER POLISH (matches Field tiles) ---------- */
+  .day,.rules-note,.cost-card,.pack-card{
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .slot,.lb-row{transition:background .18s ease}
+  .lb-row .pts{transition:background .18s ease, transform .18s ease}
+  @media (hover:hover) and (pointer:fine){
+    .day:hover{
+      transform:translateY(-4px);
+      border-color:var(--gold);
+      box-shadow:0 12px 26px rgba(61,13,16,.16), 0 2px 0 rgba(91,25,28,.08);
+    }
+    .cost-card:hover,.pack-card:hover{
+      transform:translateY(-5px);
+      border-color:var(--gold);
+      box-shadow:0 14px 28px rgba(61,13,16,.18);
+    }
+    .cost-card:hover .amt{color:var(--maroon-deep)}
+    .rules-note:hover{
+      transform:translateY(-3px);
+      border-left-color:var(--gold-bright);
+      box-shadow:0 10px 22px rgba(61,13,16,.14);
+    }
+    .slot:hover{background:rgba(217,166,46,.07)}
+    .lb-row:hover{background:rgba(217,166,46,.1)}
+    .lb-row:hover .pts{background:var(--gold-bright);transform:scale(1.06)}
+  }
+
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--maroon-deep);color:#d8bd90;text-align:center;
