@@ -161,20 +161,50 @@
   }
   .lore{margin-bottom:14px;max-width:66ch}
 
-  /* ---------- THE FIELD ---------- */
+  /* ---------- THE FIELD (flip cards) ---------- */
   .field-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
     gap:14px;
     text-align:center;
   }
   .golfer{
+    perspective:1100px;
+    min-height:318px;
+    cursor:pointer;
+    outline:none;
+  }
+  .golfer:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+  .card-inner{
+    position:relative;
+    width:100%;height:100%;min-height:inherit;
+    transform-style:preserve-3d;
+    transition:transform .6s cubic-bezier(.2,.7,.25,1);
+  }
+  .golfer.flipped .card-inner{transform:rotateY(180deg)}
+  @media (hover:hover) and (pointer:fine){
+    .golfer:hover .card-inner{transform:rotateY(180deg)}
+  }
+  .card-front,.card-back{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    border-radius:6px;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .card-front{
     background:#fffdf6;
     border:1px solid var(--rule);
-    border-radius:6px;
-    padding:18px 10px 14px;
+    padding:22px 10px 12px;
     box-shadow:0 1px 0 rgba(91,25,28,.08);
-    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .card-back{
+    transform:rotateY(180deg);
+    background:linear-gradient(160deg,var(--maroon) 0%,var(--maroon-deep) 100%);
+    border:1px solid var(--gold);
+    padding:16px 14px 14px;
+    box-shadow:0 14px 28px rgba(61,13,16,.25);
+    overflow:auto;
   }
   .golfer img,.golfer .mono{
     width:96px;height:96px;border-radius:50%;
@@ -183,20 +213,6 @@
     border:3px solid var(--gold);
     box-shadow:0 4px 12px rgba(59,13,16,.25);
     background:var(--maroon);
-    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  }
-  @media (hover:hover) and (pointer:fine){
-    .golfer:hover{
-      transform:translateY(-6px);
-      border-color:var(--gold);
-      box-shadow:0 14px 28px rgba(61,13,16,.2), 0 2px 0 rgba(91,25,28,.08);
-    }
-    .golfer:hover img,.golfer:hover .mono{
-      transform:scale(1.08) rotate(-2deg);
-      border-color:var(--gold-bright);
-      box-shadow:0 8px 18px rgba(59,13,16,.38);
-    }
-    .golfer:hover .g-name{color:var(--maroon-deep)}
   }
   .golfer .mono{
     display:flex;align-items:center;justify-content:center;
@@ -216,9 +232,31 @@
     letter-spacing:.14em;color:#8a6d3b;text-transform:uppercase;
     border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
     padding:5px 0;margin:0 6px 8px;
+    align-self:stretch;
+  }
+  .flip-hint{
+    margin-top:auto;
+    font-family:'Oswald',sans-serif;font-size:.6rem;
+    letter-spacing:.18em;text-transform:uppercase;color:#b49668;
+  }
+  .sr-eyebrow{
+    font-family:'Oswald',sans-serif;font-size:.62rem;
+    letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright);
+    border-bottom:1px solid rgba(212,175,55,.35);
+    padding-bottom:6px;margin-bottom:8px;align-self:stretch;
+  }
+  .sr-name{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:1.15rem;color:#fdf6e3;letter-spacing:.04em;
+  }
+  .g-odds{
+    font-family:'Oswald',sans-serif;font-size:.7rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);
+    border:1px solid rgba(212,175,55,.45);border-radius:4px;
+    padding:4px 10px;margin:8px 0 10px;
   }
   .golfer .g-bio{
-    font-size:.8rem;line-height:1.45;color:#5c4a3d;padding:0 8px;
+    font-size:.78rem;line-height:1.45;color:#e9dbc0;padding:0 2px;
   }
 
   /* ---------- DAY CARDS ---------- */
@@ -642,26 +680,126 @@
     <h2>The Field</h2>
     <p class="sub">Twenty players. Two teams. Every one of them convinced they're carrying their side.</p>
     <div class="field-grid">
-      <div class="golfer"><img loading="lazy" src="assets/avatars/nick.jpg" alt="Nick"><div class="g-name">Nick</div><div class="g-nick">&ldquo;Poopy&rdquo;</div><div class="g-stats">5'10" · 200 lbs · Age 26</div><div class="g-bio">Father of Henry, age six. Answers to Poopy. Also answers to Daddy. Nobody questions either anymore.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/noah.jpg" alt="Noah"><div class="g-name">Noah</div><div class="g-nick">&ldquo;Daddy Deloitte&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 24</div><div class="g-bio">The model citizen of the group. Built like a brick shithouse. MBA incoming — Daddy Deloitte provides.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/quentin.jpg" alt="Quentin"><div class="g-name">Quentin</div><div class="g-nick">&ldquo;Q&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 23</div><div class="g-bio">A menace to society. Rides motorcycles, lives in San Antonio — occasionally in his car. Has finished an Ironman and will mention it.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/soren.jpg" alt="Soren"><div class="g-name">Soren</div><div class="g-nick">&ldquo;The Breast&rdquo;</div><div class="g-stats">6'2" · 195 lbs · Age 24</div><div class="g-bio">A certified playboy. Also answers to Breast or Bresticle, depending on the formality of the occasion.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/tommy.jpg" alt="Tommy"><div class="g-name">Tommy</div><div class="g-nick">&ldquo;Higgs&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 24</div><div class="g-bio">Duluth's finest. Also answers to T. Loves raves, house music, and golfing with the boys. Will die for the boys.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/xavier.jpg" alt="Xavier"><div class="g-name">Xavier</div><div class="g-nick">&ldquo;Xav&rdquo;</div><div class="g-stats">6'0" · 200 lbs · Age 24</div><div class="g-bio">Sioux Falls born and raised. Loves beers, booze, and is in a committed relationship with aerospace engineering.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/zane.jpg" alt="Zane"><div class="g-name">Zane</div><div class="g-nick">&ldquo;T-Neck&rdquo;</div><div class="g-stats">5'10" · 170 lbs · Age 23</div><div class="g-bio">Born in Egypt, raised in rich-kid-town Minnesota. Has a sick house on Lake Minnetonka that the boys treat as their own.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/avinoam.jpg" alt="Avinoam"><div class="g-name">Avinoam</div><div class="g-nick">&ldquo;Gunter&rdquo;</div><div class="g-stats">6'3" · 210 lbs · Age 25</div><div class="g-bio">Super tall, super huge, no kid — just a super sweaty man who loves being weird as hell.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/curt.jpg" alt="Curt"><div class="g-name">Curt</div><div class="g-nick">&ldquo;Curt&rdquo;</div><div class="g-stats">6'1" · 215 lbs · Age 24</div><div class="g-bio">Bearded and grumpy. Now a Vice President at his firm, making a lot of money and still not smiling.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/delo.jpg" alt="Delo"><div class="g-name">Delo</div><div class="g-nick">&ldquo;Delo&rdquo;</div><div class="g-stats">6'0" · 230 lbs · Age 24</div><div class="g-bio">His nickname is just Delo. Loves house music and drugs — the order depends on the weekend.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/drew.jpg" alt="Drew"><div class="g-name">Drew</div><div class="g-nick">&ldquo;Gali&rdquo;</div><div class="g-stats">5'11" · 180 lbs · Age 23</div><div class="g-bio">A DJ, and the sweetest man alive. Loves to poop his pants.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/graham.jpg" alt="Graham"><div class="g-name">Graham</div><div class="g-nick">&ldquo;G&rdquo;</div><div class="g-stats">5'7" · 175 lbs · Age 24</div><div class="g-bio">A certified menace. Short king, absolutely jacked. Drives it 300 yards in an unknown direction.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/jackson.jpg" alt="Jackson"><div class="g-name">Jackson</div><div class="g-nick">&ldquo;Stroh&rdquo;</div><div class="g-stats">6'2" · 185 lbs · Age 24</div><div class="g-bio">A tall stud golfer out of Green Bay. Exclusively dates women with large chests. We respect the consistency.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/jamie.jpg" alt="Jamie"><div class="g-name">Jamie</div><div class="g-nick">&ldquo;James&rdquo;</div><div class="g-stats">6'0" · 185 lbs · Age 24</div><div class="g-bio">A chiropractor who acts 40 with four kids already. Annoyingly good at golf.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/joey.jpg" alt="Joey"><div class="g-name">Joey</div><div class="g-nick">&ldquo;Joeyyyy&rdquo;</div><div class="g-stats">6'2" · 190 lbs · Age 23</div><div class="g-bio">DJ by night, tech sales by day — makes bread doing both. Sucks at golf but houses booze at a professional level.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/kyle.jpg" alt="Kyle"><div class="g-name">Kyle</div><div class="g-nick">&ldquo;El Pres&rdquo;</div><div class="g-stats">6'1" · 195 lbs · Age 24</div><div class="g-bio">President and Commissioner of the tournament and the fraternity. That is all you need to know. Also a doctor.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/marcus.jpg" alt="Marcus"><div class="g-name">Marcus</div><div class="g-nick">&ldquo;Cus&rdquo;</div><div class="g-stats">5'11" · 190 lbs · Age 24</div><div class="g-bio">In love with golf, but his true romance is Culver&rsquo;s &mdash; a relationship scouts describe as &ldquo;unsettlingly physical.&rdquo; Has been known to bring a ButterBurger to date night. His girlfriend never agreed to the throuple.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/matthew.jpg" alt="Matthew"><div class="g-name">Matthew</div><div class="g-nick">&ldquo;Kini&rdquo;</div><div class="g-stats">6'2" · 200 lbs · Age 24</div><div class="g-bio">A finance daddy working in PE. Passions include dating women and doing bags.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/mitch.jpg" alt="Mitch"><div class="g-name">Mitch</div><div class="g-nick">&ldquo;Mitch&rdquo;</div><div class="g-stats">5'10" · 180 lbs · Age 24</div><div class="g-bio">A kind soul from Minnetonka who wishes he were better at golf — good enough to beat Bjorn, specifically. He never does, though.</div></div>
-      <div class="golfer"><img loading="lazy" src="assets/avatars/bjorn.jpg" alt="Bjorn"><div class="g-name">Bjorn</div><div class="g-nick">&ldquo;Sandbagger&rdquo;</div><div class="g-stats">6'5" · 210 lbs · Age 25</div><div class="g-bio">A Scandinavian psychopath who hates golf but loves his friends. Here for the boys, not the birdies.</div></div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Nick — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/nick.jpg" alt="Nick"><div class="g-name">Nick</div><div class="g-nick">&ldquo;Poopy&rdquo;</div><div class="g-stats">5'10" · 210 lbs · Age 26</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Nick &ldquo;Poopy&rdquo;</div><div class="g-odds">Odds to Win · 40/1</div><div class="g-bio">Father of Henry, age six. Answers to Poopy. Also answers to Daddy. Nobody questions either anymore.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Noah — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/noah.jpg" alt="Noah"><div class="g-name">Noah</div><div class="g-nick">&ldquo;Daddy Deloitte&rdquo;</div><div class="g-stats">6'2" · 215 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Noah &ldquo;Daddy Deloitte&rdquo;</div><div class="g-odds">Odds to Win · 25/1</div><div class="g-bio">The model citizen of the group. Built like a brick shithouse. MBA incoming — Daddy Deloitte provides.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Quentin — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/quentin.jpg" alt="Quentin"><div class="g-name">Quentin</div><div class="g-nick">&ldquo;Q&rdquo;</div><div class="g-stats">5'10" · 150 lbs · Age 23</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Quentin &ldquo;Q&rdquo;</div><div class="g-odds">Odds to Win · 30/1</div><div class="g-bio">A menace to society. Rides motorcycles, lives in San Antonio — occasionally in his car. Has finished an Ironman and will mention it.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Soren — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/soren.jpg" alt="Soren"><div class="g-name">Soren</div><div class="g-nick">&ldquo;The Breast&rdquo;</div><div class="g-stats">6'0" · 185 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Soren &ldquo;The Breast&rdquo;</div><div class="g-odds">Odds to Win · 50/1</div><div class="g-bio">A certified playboy. Also answers to Breast or Bresticle, depending on the formality of the occasion.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Tommy — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/tommy.jpg" alt="Tommy"><div class="g-name">Tommy</div><div class="g-nick">&ldquo;Higgs&rdquo;</div><div class="g-stats">6'2" · 185 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Tommy &ldquo;Higgs&rdquo;</div><div class="g-odds">Odds to Win · 66/1</div><div class="g-bio">Duluth's finest. Also answers to T. Loves raves, house music, and golfing with the boys. Will die for the boys.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Xavier — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/xavier.jpg" alt="Xavier"><div class="g-name">Xavier</div><div class="g-nick">&ldquo;Xav&rdquo;</div><div class="g-stats">6'0" · 200 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Xavier &ldquo;Xav&rdquo;</div><div class="g-odds">Odds to Win · 45/1</div><div class="g-bio">Sioux Falls born and raised. Loves beers, booze, and is in a committed relationship with aerospace engineering.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Zane — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/zane.jpg" alt="Zane"><div class="g-name">Zane</div><div class="g-nick">&ldquo;T-Neck&rdquo;</div><div class="g-stats">5'11" · 175 lbs · Age 23</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Zane &ldquo;T-Neck&rdquo;</div><div class="g-odds">Odds to Win · 33/1</div><div class="g-bio">Born in Egypt, raised in rich-kid-town Minnesota. Has a sick house on Lake Minnetonka that the boys treat as their own.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Avinoam — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/avinoam.jpg" alt="Avinoam"><div class="g-name">Avinoam</div><div class="g-nick">&ldquo;Gunter&rdquo;</div><div class="g-stats">6'4" · 230 lbs · Age 25</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Avinoam &ldquo;Gunter&rdquo;</div><div class="g-odds">Odds to Win · 80/1</div><div class="g-bio">Super tall, super huge, no kid — just a super sweaty man who loves being weird as hell.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Curt — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/curt.jpg" alt="Curt"><div class="g-name">Curt</div><div class="g-nick">&ldquo;Curt&rdquo;</div><div class="g-stats">6'2" · 250 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Curt</div><div class="g-odds">Odds to Win · 20/1</div><div class="g-bio">Bearded and grumpy. Now a Vice President at his firm, making a lot of money and still not smiling.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Delo — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/delo.jpg" alt="Delo"><div class="g-name">Delo</div><div class="g-nick">&ldquo;Delo&rdquo;</div><div class="g-stats">6'0" · 200 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Delo</div><div class="g-odds">Odds to Win · 200/1</div><div class="g-bio">His nickname is just Delo. Loves house music and drugs — the order depends on the weekend.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Drew — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/drew.jpg" alt="Drew"><div class="g-name">Drew</div><div class="g-nick">&ldquo;Gali&rdquo;</div><div class="g-stats">6'0" · 175 lbs · Age 23</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Drew &ldquo;Gali&rdquo;</div><div class="g-odds">Odds to Win · 150/1</div><div class="g-bio">A DJ, and the sweetest man alive. Loves to poop his pants.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Graham — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/graham.jpg" alt="Graham"><div class="g-name">Graham</div><div class="g-nick">&ldquo;G&rdquo;</div><div class="g-stats">5'9" · 180 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Graham &ldquo;G&rdquo;</div><div class="g-odds">Odds to Win · 12/1</div><div class="g-bio">A certified menace. Short king, absolutely jacked. Drives it 300 yards in an unknown direction.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Jackson — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/jackson.jpg" alt="Jackson"><div class="g-name">Jackson</div><div class="g-nick">&ldquo;Stroh&rdquo;</div><div class="g-stats">6'3" · 185 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Jackson &ldquo;Stroh&rdquo;</div><div class="g-odds">Odds to Win · 5/1</div><div class="g-bio">A tall stud golfer out of Green Bay. Exclusively dates women with large chests. We respect the consistency.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Jamie — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/jamie.jpg" alt="Jamie"><div class="g-name">Jamie</div><div class="g-nick">&ldquo;James&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Jamie &ldquo;James&rdquo;</div><div class="g-odds">Odds to Win · 4/1 &middot; Favorite</div><div class="g-bio">A chiropractor who acts 40 with four kids already. Annoyingly good at golf.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Joey — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/joey.jpg" alt="Joey"><div class="g-name">Joey</div><div class="g-nick">&ldquo;Joeyyyy&rdquo;</div><div class="g-stats">6'3" · 200 lbs · Age 23</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Joey &ldquo;Joeyyyy&rdquo;</div><div class="g-odds">Odds to Win · 250/1</div><div class="g-bio">DJ by night, tech sales by day — makes bread doing both. Sucks at golf but houses booze at a professional level.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Kyle — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/kyle.jpg" alt="Kyle"><div class="g-name">Kyle</div><div class="g-nick">&ldquo;El Pres&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Kyle &ldquo;El Pres&rdquo;</div><div class="g-odds">Odds to Win · 8/1</div><div class="g-bio">President and Commissioner of the tournament and the fraternity. That is all you need to know. Also a doctor.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Marcus — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/marcus.jpg" alt="Marcus"><div class="g-name">Marcus</div><div class="g-nick">&ldquo;Cus&rdquo;</div><div class="g-stats">6'0" · 180 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Marcus &ldquo;Cus&rdquo;</div><div class="g-odds">Odds to Win · 10/1</div><div class="g-bio">In love with golf, but his true romance is Culver&rsquo;s &mdash; a relationship scouts describe as &ldquo;unsettlingly physical.&rdquo; Has been known to bring a ButterBurger to date night. His girlfriend never agreed to the throuple.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Matthew — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/matthew.jpg" alt="Matthew"><div class="g-name">Matthew</div><div class="g-nick">&ldquo;Kini&rdquo;</div><div class="g-stats">6'1" · 190 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Matthew &ldquo;Kini&rdquo;</div><div class="g-odds">Odds to Win · 60/1</div><div class="g-bio">A finance daddy working in PE. Passions include dating women and doing bags.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Mitch — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/mitch.jpg" alt="Mitch"><div class="g-name">Mitch</div><div class="g-nick">&ldquo;Mitch&rdquo;</div><div class="g-stats">5'10" · 175 lbs · Age 24</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Mitch</div><div class="g-odds">Odds to Win · 100/1</div><div class="g-bio">A kind soul from Minnetonka who wishes he were better at golf — good enough to beat Bjorn, specifically. He never does, though.</div></div>
+        </div>
+      </div>
+      <div class="golfer" tabindex="0" role="button" aria-label="Bjorn — flip for scouting report">
+        <div class="card-inner">
+          <div class="card-front"><img loading="lazy" src="assets/avatars/bjorn.jpg" alt="Bjorn"><div class="g-name">Bjorn</div><div class="g-nick">&ldquo;Sandbagger&rdquo;</div><div class="g-stats">6'5" · 210 lbs · Age 25</div><div class="flip-hint">Scouting Report &#8635;</div></div>
+          <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Bjorn &ldquo;Sandbagger&rdquo;</div><div class="g-odds">Odds to Win · 15/1</div><div class="g-bio">A Scandinavian psychopath who hates golf but loves his friends. Here for the boys, not the birdies.</div></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -906,6 +1044,15 @@
       var el=document.getElementById(id); if(el) io.observe(el);
     });
   }
+
+  // Player cards — tap or Enter/Space flips (hover already flips on desktop)
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.golfer'));
+  cards.forEach(function(c){
+    c.addEventListener('click',function(){c.classList.toggle('flipped');});
+    c.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();c.classList.toggle('flipped');}
+    });
+  });
 })();
 </script>
 </body>
