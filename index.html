@@ -259,6 +259,74 @@
     font-size:.78rem;line-height:1.45;color:#e9dbc0;padding:0 2px;
   }
 
+  /* ---------- ODDS BOARD ---------- */
+  .book{
+    margin-top:28px;
+    background:linear-gradient(160deg,var(--maroon) 0%,var(--maroon-deep) 100%);
+    border:1px solid var(--gold);
+    border-radius:6px;
+    overflow:hidden;
+    text-align:left;
+  }
+  .book-head{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:14px 18px 12px;
+    border-bottom:1px solid rgba(212,175,55,.35);
+  }
+  .book-title{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.24em;font-size:.68rem;color:var(--gold-bright);
+  }
+  .book-title b{display:block;font-size:1rem;letter-spacing:.14em;color:#fdf6e3;margin-top:2px;font-weight:500}
+  .book-live{
+    font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+    color:#fdf6e3;border:1px solid rgba(212,175,55,.45);border-radius:999px;
+    padding:4px 11px;white-space:nowrap;
+  }
+  .book-live::before{
+    content:'';display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:#7ee081;margin-right:7px;vertical-align:1px;
+    animation:bookpulse 1.6s ease-in-out infinite;
+  }
+  @keyframes bookpulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .book-grid{display:grid;grid-template-columns:1fr 1fr}
+  .book-col+.book-col{border-left:1px solid rgba(212,175,55,.14)}
+  @media (max-width:640px){
+    .book-grid{grid-template-columns:1fr}
+    .book-col+.book-col{border-left:0}
+  }
+  .book-row{
+    display:flex;align-items:center;gap:12px;
+    padding:9px 18px;
+    border-top:1px solid rgba(212,175,55,.14);
+    transition:background .15s ease;
+  }
+  .book-col .book-row:first-child{border-top:0}
+  @media (max-width:640px){.book-col+.book-col .book-row:first-child{border-top:1px solid rgba(212,175,55,.14)}}
+  .book-row:hover{background:rgba(212,175,55,.07)}
+  .book-player{flex:1;min-width:0}
+  .book-player .n{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;
+    font-size:.78rem;color:#fdf6e3;
+  }
+  .book-player .k{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:.85rem;color:var(--gold);
+  }
+  .odds-chip{
+    font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.08em;
+    color:var(--gold-bright);
+    border:1px solid rgba(212,175,55,.5);border-radius:4px;
+    padding:4px 10px;min-width:64px;text-align:center;
+    background:rgba(0,0,0,.18);
+  }
+  .book-fine{
+    padding:10px 18px 14px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:.82rem;color:#cbb287;
+    border-top:1px solid rgba(212,175,55,.35);
+  }
+
   /* ---------- DAY CARDS ---------- */
   .day{
     background:#fffdf6;
@@ -800,6 +868,40 @@
           <div class="card-back"><div class="sr-eyebrow">Scouting Report</div><div class="sr-name">Bjorn &ldquo;Sandbagger&rdquo;</div><div class="g-odds">Odds to Win · 33/1</div><div class="g-bio">A Scandinavian psychopath who hates golf but loves his friends. Here for the boys, not the birdies.</div></div>
         </div>
       </div>
+    </div>
+
+    <div class="book" aria-label="Odds to win the 1813 Classic — futures board">
+      <div class="book-head">
+        <div class="book-title">1813 Sportsbook<b>Outright Winner &middot; Futures</b></div>
+        <span class="book-live">Lines Live</span>
+      </div>
+      <div class="book-grid">
+        <div class="book-col">
+          <div class="book-row"><span class="book-player"><span class="n">Jamie</span> <span class="k">&ldquo;James&rdquo;</span></span><span class="odds-chip">+400</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Jackson</span> <span class="k">&ldquo;Stroh&rdquo;</span></span><span class="odds-chip">+500</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Mitch</span></span><span class="odds-chip">+600</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Kyle</span> <span class="k">&ldquo;El Pres&rdquo;</span></span><span class="odds-chip">+800</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Marcus</span> <span class="k">&ldquo;Cus&rdquo;</span></span><span class="odds-chip">+1000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Drew</span> <span class="k">&ldquo;Gali&rdquo;</span></span><span class="odds-chip">+1200</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Curt</span></span><span class="odds-chip">+2000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Quentin</span> <span class="k">&ldquo;Q&rdquo;</span></span><span class="odds-chip">+3000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Bjorn</span> <span class="k">&ldquo;Sandbagger&rdquo;</span></span><span class="odds-chip">+3300</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Nick</span> <span class="k">&ldquo;Poopy&rdquo;</span></span><span class="odds-chip">+4000</span></div>
+        </div>
+        <div class="book-col">
+          <div class="book-row"><span class="book-player"><span class="n">Xavier</span> <span class="k">&ldquo;Xav&rdquo;</span></span><span class="odds-chip">+4500</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Soren</span> <span class="k">&ldquo;The Breast&rdquo;</span></span><span class="odds-chip">+5000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Tommy</span> <span class="k">&ldquo;Higgs&rdquo;</span></span><span class="odds-chip">+5000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Matthew</span> <span class="k">&ldquo;Kini&rdquo;</span></span><span class="odds-chip">+6000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Avinoam</span> <span class="k">&ldquo;Gunter&rdquo;</span></span><span class="odds-chip">+8000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Noah</span> <span class="k">&ldquo;Daddy Deloitte&rdquo;</span></span><span class="odds-chip">+12500</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Graham</span> <span class="k">&ldquo;G&rdquo;</span></span><span class="odds-chip">+15000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Zane</span> <span class="k">&ldquo;T-Neck&rdquo;</span></span><span class="odds-chip">+17500</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Delo</span></span><span class="odds-chip">+20000</span></div>
+          <div class="book-row"><span class="book-player"><span class="n">Joey</span> <span class="k">&ldquo;Joeyyyy&rdquo;</span></span><span class="odds-chip">+25000</span></div>
+        </div>
+      </div>
+      <div class="book-fine">For entertainment purposes only &middot; All payouts settled in Busch Light &middot; Lines move at the Commissioner&rsquo;s discretion</div>
     </div>
   </section>
 
