@@ -589,9 +589,10 @@
 
   /* ===================================================================
      MOTION & POLISH LAYER
-     Entrances, scroll reveals, and ambient life. Every animated initial
-     state lives inside a (prefers-reduced-motion: no-preference) guard,
-     so reduced-motion users get the full, static page with nothing hidden.
+     One entrance, scroll reveals, and interaction feedback. Every
+     animated initial state lives inside a (prefers-reduced-motion:
+     no-preference) guard, so reduced-motion users get the full, static
+     page with nothing hidden.
      =================================================================== */
 
   /* --- Scroll reveal: elements rise + fade as they enter the viewport --- */
@@ -605,23 +606,16 @@
     html.js .reveal.is-in{opacity:1;transform:none}
   }
 
-  /* --- Hero entrance choreography + ambient motion --- */
+  /* --- Hero entrance choreography --- */
   @media (prefers-reduced-motion: no-preference){
     .hero > *{animation:heroUp .9s cubic-bezier(.2,.7,.25,1) both}
-    .hero .badge{
-      animation:heroPop 1.05s cubic-bezier(.2,.8,.2,1) both,
-                badgeFloat 7s ease-in-out 1.4s infinite;
-    }
+    .hero .badge{animation:heroPop 1.05s cubic-bezier(.2,.8,.2,1) both}
     .hero .script{animation-delay:.30s}
     .hero h1{animation-delay:.44s}
     .hero > p.dates{animation-delay:.58s}
     .hero .countdown,.hero .cd-caption{animation-delay:.72s}
     .hero .venue{animation-delay:.82s}
     .hero .field-photo{animation-delay:.96s}
-    .hero::after{
-      background-size:40px 100%;
-      animation:stripeSlide 9s linear infinite;
-    }
   }
   @keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   @keyframes heroPop{
@@ -629,8 +623,6 @@
     60%{opacity:1;transform:translateY(0) scale(1.015)}
     100%{opacity:1;transform:none}
   }
-  @keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  @keyframes stripeSlide{from{background-position:0 0}to{background-position:40px 0}}
 
   /* stronger hero title depth */
   .hero h1{text-shadow:0 3px 22px rgba(0,0,0,.32)}
@@ -663,15 +655,9 @@
     }
   }
 
-  /* --- Sheen sweep on the live pill + a shine on the download buttons --- */
-  .book-live,.dl-btn{position:relative;overflow:hidden}
+  /* --- Shine sweep on the download buttons, on hover only --- */
+  .dl-btn{position:relative;overflow:hidden}
   @media (prefers-reduced-motion: no-preference){
-    .book-live::after{
-      content:"";position:absolute;top:0;left:-140%;width:60%;height:100%;
-      background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
-      transform:skewX(-18deg);
-      animation:sheen 5.5s ease-in-out 2s infinite;
-    }
     .dl-btn::after{
       content:"";position:absolute;top:0;left:-140%;width:55%;height:100%;
       background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
@@ -679,7 +665,6 @@
     }
     .dl-btn:hover::after,.dl-btn:focus-visible::after{left:150%}
   }
-  @keyframes sheen{0%{left:-140%}22%{left:150%}100%{left:150%}}
 
   /* --- Odds chips light up as you scan the book --- */
   .odds-chip{transition:background .18s ease,color .18s ease,box-shadow .18s ease,transform .18s ease}
@@ -697,15 +682,6 @@
     0%{transform:scale(1)}
     35%{transform:scale(1.11);color:#fff}
     100%{transform:scale(1)}
-  }
-
-  /* --- Scroll progress bar — a thin gold rail across the very top --- */
-  .scroll-progress{
-    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
-    background:linear-gradient(90deg,var(--gold),var(--gold-bright));
-    box-shadow:0 0 8px rgba(233,194,88,.55);
-    transition:width .1s linear;
-    pointer-events:none;
   }
 
   /* --- Hero field photo: gentle zoom + frame brighten on hover --- */
@@ -736,7 +712,6 @@
 </style>
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <header class="hero">
   <!-- 1813 Classic badge -->
@@ -1309,54 +1284,12 @@
     });
   });
 
-  // ---- Scroll progress rail ----
-  var sp=document.getElementById('scrollProgress');
-  if(sp){
-    var updateProgress=function(){
-      var h=document.documentElement;
-      var max=h.scrollHeight-h.clientHeight;
-      var top=h.scrollTop||document.body.scrollTop||0;
-      sp.style.width=(max>0?Math.min(top/max,1)*100:0)+'%';
-    };
-    window.addEventListener('scroll',updateProgress,{passive:true});
-    window.addEventListener('resize',updateProgress);
-    updateProgress();
-  }
-
-  // ---- Count-up: numbers tally up the first time they scroll into view ----
-  function countUp(el){
-    if(el.dataset.counted) return;
-    el.dataset.counted='1';
-    var raw=el.textContent.trim();
-    var match=raw.match(/-?\d[\d,]*(\.\d+)?/);
-    if(!match){return;}
-    var numStr=match[0].replace(/,/g,'');
-    var target=parseFloat(numStr);
-    if(isNaN(target)){return;}
-    var decimals=(numStr.split('.')[1]||'').length;
-    var prefix=raw.slice(0,match.index), suffix=raw.slice(match.index+match[0].length);
-    if(reduceMotion){return;}
-    var dur=1100, startT=null;
-    function fmt(v){ return prefix+(decimals?v.toFixed(decimals):Math.round(v))+suffix; }
-    function step(ts){
-      if(startT===null)startT=ts;
-      var p=Math.min((ts-startT)/dur,1), eased=1-Math.pow(1-p,3);
-      el.textContent=fmt(target*eased);
-      if(p<1){requestAnimationFrame(step);}else{el.textContent=raw;}
-    }
-    requestAnimationFrame(step);
-  }
-
-  // ---- Scroll reveal + count-up wiring ----
+  // ---- Scroll reveal wiring ----
   var revealEls=Array.prototype.slice.call(document.querySelectorAll(
     'section > .eyebrow, section > h2, section > .sub, section > .lore,'+
     '.cal-strip, #schedule .day, .field-grid .golfer, .book,'+
     '.leaderboard, .rules-note, .lb-embed, .cost-card, .cost-etc, .pack-card, .sun'
   ));
-  var counters=Array.prototype.slice.call(document.querySelectorAll(
-    '#format .pts, #format .lb-total > b, #cost .amt'
-  ));
-
   if(!reduceMotion && 'IntersectionObserver' in window){
     // Stagger siblings that reveal together (grids, paired cards, section intros).
     var groups=new Map();
@@ -1373,13 +1306,6 @@
       });
     },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
     revealEls.forEach(function(el){ io.observe(el); });
-
-    var cio=new IntersectionObserver(function(entries,obs){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ countUp(e.target); obs.unobserve(e.target); }
-      });
-    },{threshold:0.6});
-    counters.forEach(function(el){ cio.observe(el); });
   }
 })();
 </script>
