@@ -34,6 +34,7 @@
     --rule:#dcc99a;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  [hidden]{display:none!important}
   html{scroll-behavior:smooth}
   body{
     background:var(--parchment);
@@ -588,6 +589,16 @@
     font-family:'Pinyon Script',cursive;font-size:clamp(1.6rem,5vw,2.1rem);
     color:var(--gold-bright);text-align:center;margin-top:26px;
   }
+  .cd-follow{
+    display:inline-block;margin-top:14px;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.22em;font-size:.72rem;text-decoration:none;
+    color:var(--gold-bright);border:1px solid var(--gold);
+    border-radius:4px;padding:9px 18px;
+    transition:background .15s ease,color .15s ease,transform .15s ease;
+  }
+  .cd-follow:hover,.cd-follow:focus-visible{background:var(--gold);color:var(--maroon-deep);transform:translateY(-2px)}
+  .cd-follow:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
   @media (max-width:420px){.cd-cell{padding:0 10px}}
 
   /* ---------- FOOTER ---------- */
@@ -818,6 +829,7 @@
   </div>
   <p class="cd-caption" id="cd-caption" hidden>Until the Draft &middot; Thursday, 7:00 PM</p>
   <p class="cd-live" id="cd-live" hidden>The Classic is underway.</p>
+  <a class="cd-follow" id="cd-follow" href="#leaderboard" hidden>Follow the board</a>
   <p class="venue">Giants Ridge &middot; Biwabik, Minnesota</p>
   <p class="dates">Thursday, August 6 — Sunday, August 9</p>
   <figure class="field-photo">
@@ -1290,7 +1302,10 @@
     if(diff<=0){
       wrap.hidden=true; cap.hidden=true;
       live.hidden=false;
-      live.textContent = now>over ? "See you in 2027." : "The Classic is underway.";
+      var fin = now>over;
+      live.textContent = fin ? "See you in 2027." : "The Classic is underway.";
+      var follow=document.getElementById("cd-follow");
+      if(follow) follow.hidden = fin;
       return;
     }
     wrap.hidden=false; cap.hidden=false;
