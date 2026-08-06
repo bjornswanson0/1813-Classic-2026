@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1813 Classic — Branding Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Pinyon+Script&family=Oswald:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #5b191c;
+    --maroon-deep: #3d0d10;
+    --gold: #d9a62e;
+    --gold-bright: #e9c258;
+    --parchment: #f9f3e3;
+    --parchment-deep: #ede1c4;
+    --ink: #2b211b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    padding: 60px 24px 100px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  header p.label {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: .32em;
+    font-size: .7rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--maroon-deep);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 320px;
+    margin: 18px auto 0;
+  }
+  .rule hr { flex: 1; border: none; border-top: 1px solid var(--gold); }
+  .rule span { color: var(--gold); font-size: .7rem; }
+
+  /* current badge section */
+  .current-badge {
+    text-align: center;
+    background: var(--maroon-deep);
+    border-radius: 12px;
+    padding: 50px 24px;
+    max-width: 720px;
+    margin: 0 auto 80px;
+  }
+  .current-badge .label {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: .28em;
+    font-size: .68rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  /* concept grid */
+  .concepts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .concept {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .concept-badge {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+  .concept-badge svg {
+    width: 100%;
+    height: 100%;
+  }
+  .concept-badge.on-maroon { background: var(--maroon-deep); }
+  .concept-badge.on-parchment { background: var(--parchment-deep); border: 1px solid #d4c49a; }
+  .concept-badge.on-dark { background: #1a1008; }
+
+  .concept-label {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: .28em;
+    font-size: .65rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .concept-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--maroon-deep);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .concept-desc {
+    font-size: .88rem;
+    line-height: 1.6;
+    color: #5a4a38;
+    text-align: center;
+    max-width: 300px;
+  }
+  .concept-desc strong {
+    color: var(--ink);
+  }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--maroon-deep);
+    margin-bottom: 6px;
+  }
+  .section-head p {
+    font-size: .85rem;
+    color: #7a6848;
+  }
+  h2.divider {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: .32em;
+    font-size: .7rem;
+    text-transform: uppercase;
+    color: #a08040;
+    text-align: center;
+    margin: 80px 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  h2.divider::before, h2.divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid #d4c49a;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="label">Internal · August 2026</p>
+  <h1>1813 Classic — Branding Concepts</h1>
+  <div class="rule"><hr><span>&#9670;</span><hr></div>
+</header>
+
+<!-- CURRENT STATE -->
+<div class="current-badge">
+  <div class="label">Current Badge — Reference</div>
+  <!-- existing badge inline -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" style="width:min(240px,64vw);height:auto;display:block;margin:0 auto" role="img" aria-label="Current 1813 Classic badge">
+    <defs>
+      <clipPath id="shield">
+        <path d="M38 78 Q38 40 76 40 L244 40 Q282 40 282 78 L282 200 Q282 300 160 328 Q38 300 38 200 Z"/>
+      </clipPath>
+    </defs>
+    <path d="M32 76 Q32 34 74 34 L246 34 Q288 34 288 76 L288 200 Q288 305 160 335 Q32 305 32 200 Z" fill="#d9a62e"/>
+    <g clip-path="url(#shield)">
+      <rect x="38" y="40" width="244" height="300" fill="#e0af35"/>
+      <path d="M38 40 H282 V166 L200 172 L120 164 L38 172 Z" fill="#5b191c"/>
+      <g transform="translate(160,84)">
+        <g stroke="#d9a62e" stroke-width="1.6" opacity=".9">
+          <line x1="0" y1="-34" x2="0" y2="-22"/><line x1="0" y1="34" x2="0" y2="22"/>
+          <line x1="-34" y1="0" x2="-22" y2="0"/><line x1="34" y1="0" x2="22" y2="0"/>
+          <line x1="-24" y1="-24" x2="-16" y2="-16"/><line x1="24" y1="-24" x2="16" y2="-16"/>
+          <line x1="-24" y1="24" x2="-16" y2="16"/><line x1="24" y1="24" x2="16" y2="16"/>
+          <line x1="-13" y1="-31" x2="-9" y2="-21"/><line x1="13" y1="-31" x2="9" y2="-21"/>
+          <line x1="-31" y1="-13" x2="-21" y2="-9"/><line x1="31" y1="-13" x2="21" y2="-9"/>
+          <line x1="-13" y1="31" x2="-9" y2="21"/><line x1="13" y1="31" x2="9" y2="21"/>
+          <line x1="-31" y1="13" x2="-21" y2="9"/><line x1="31" y1="13" x2="21" y2="9"/>
+        </g>
+        <path d="M0 -18 L14 0 L0 18 L-14 0 Z" fill="none" stroke="#d9a62e" stroke-width="3"/>
+        <path d="M0 -10 L8 0 L0 10 L-8 0 Z" fill="#d9a62e"/>
+      </g>
+      <g fill="#e0af35">
+        <path d="M78 118 L100 160 L56 160 Z"/><rect x="73" y="160" width="10" height="12" fill="#3a2012"/>
+      </g>
+      <g fill="#e0af35">
+        <path d="M228 108 L252 156 L204 156 Z"/><rect x="223" y="156" width="10" height="13" fill="#3a2012"/>
+        <path d="M258 122 L278 160 L238 160 Z"/><rect x="253" y="160" width="9" height="11" fill="#3a2012"/>
+      </g>
+      <rect x="176" y="118" width="4" height="72" rx="2" fill="#3a2012"/>
+      <path d="M180 118 L212 128 L180 138 Z" fill="#e9c258"/>
+      <ellipse cx="178" cy="192" rx="12" ry="4" fill="#3a2012"/>
+      <circle cx="150" cy="188" r="6" fill="#f9f3e3"/>
+      <path d="M92 196 Q112 184 132 196 Q112 208 92 196 Z" fill="#3a2012"/>
+      <path d="M100 196 Q112 190 124 196" stroke="#e0af35" stroke-width="2" fill="none"/>
+      <text x="160" y="286" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="700" font-size="17" letter-spacing="4" fill="#3a2012">GIANTS RIDGE, MN</text>
+      <text x="160" y="308" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14" letter-spacing="5" fill="#3a2012">EST. 2026</text>
+    </g>
+    <g>
+      <path d="M18 216 L52 232 L52 252 L18 268 Z" fill="#2f1a0e"/>
+      <path d="M302 216 L268 232 L268 252 L302 268 Z" fill="#2f1a0e"/>
+      <rect x="40" y="222" width="240" height="42" fill="#3a2012"/>
+      <line x1="48" y1="228" x2="272" y2="228" stroke="#d9a62e" stroke-width="1.5"/>
+      <line x1="48" y1="258" x2="272" y2="258" stroke="#d9a62e" stroke-width="1.5"/>
+      <text x="160" y="251" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="700" font-size="26" letter-spacing="5" fill="#e9c258">1813 CLASSIC</text>
+    </g>
+  </svg>
+</div>
+
+<!-- CONCEPTS -->
+<h2 class="divider">New Directions</h2>
+
+<div class="concepts">
+
+  <!-- CONCEPT A: THE DIAMOND -->
+  <div class="concept">
+    <div class="concept-badge on-maroon">
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow-a">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- outer ring -->
+        <circle cx="140" cy="140" r="128" fill="none" stroke="#d9a62e" stroke-width="1.5"/>
+        <circle cx="140" cy="140" r="120" fill="none" stroke="#d9a62e" stroke-width=".5" opacity=".5"/>
+
+        <!-- ring text top: THE 1813 CLASSIC -->
+        <path id="topArc" d="M 140 140 m -108 0 a 108 108 0 0 1 216 0" fill="none"/>
+        <text font-family="'Cormorant Garamond',serif" font-weight="600" font-size="11" letter-spacing="3.5" fill="#d9a62e">
+          <textPath href="#topArc" startOffset="50%" text-anchor="middle">THE  1813  CLASSIC</textPath>
+        </text>
+
+        <!-- ring text bottom: GIANTS RIDGE · MN · 2026 -->
+        <path id="botArc" d="M 140 140 m -108 0 a 108 108 0 0 0 216 0" fill="none"/>
+        <text font-family="'Oswald',sans-serif" font-weight="400" font-size="8.5" letter-spacing="3" fill="#d9a62e" opacity=".85">
+          <textPath href="#botArc" startOffset="50%" text-anchor="middle">GIANTS RIDGE  ·  MN  ·  2026</textPath>
+        </text>
+
+        <!-- separator dots -->
+        <circle cx="36" cy="140" r="3" fill="#d9a62e"/>
+        <circle cx="244" cy="140" r="3" fill="#d9a62e"/>
+
+        <!-- ΠΚΑ diamond — main mark -->
+        <!-- outer gold diamond shape -->
+        <g transform="translate(140,134)">
+          <!-- four shield petals (like the PIKE emblem) -->
+          <path d="M0 -56 Q22 -44 22 -22 Q22 0 0 0 Q-22 0 -22 -22 Q-22 -44 0 -56Z" fill="#b88a1a" opacity=".8"/>
+          <path d="M0 56 Q22 44 22 22 Q22 0 0 0 Q-22 0 -22 22 Q-22 44 0 56Z" fill="#b88a1a" opacity=".8"/>
+          <path d="M-56 0 Q-44 -22 -22 -22 Q0 -22 0 0 Q0 22 -22 22 Q-44 22 -56 0Z" fill="#b88a1a" opacity=".8"/>
+          <path d="M56 0 Q44 -22 22 -22 Q0 -22 0 0 Q0 22 22 22 Q44 22 56 0Z" fill="#b88a1a" opacity=".8"/>
+          <!-- center diamond -->
+          <path d="M0 -52 L38 0 L0 52 L-38 0 Z" fill="#5b191c" stroke="#d9a62e" stroke-width="2.5"/>
+          <!-- ΠΚΑ text in diamond -->
+          <text x="0" y="-6" text-anchor="middle" font-family="serif" font-size="20" font-weight="700" fill="#e9c258" letter-spacing="1">πΚΑ</text>
+          <!-- 1813 below greek -->
+          <text x="0" y="14" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="11" font-weight="600" fill="#d9a62e" letter-spacing="2">1813</text>
+        </g>
+      </svg>
+    </div>
+    <p class="concept-label">Concept A</p>
+    <p class="concept-name">The Diamond</p>
+    <p class="concept-desc">Elevates the ΠΚΑ diamond emblem to a full tournament seal. The four shield petals frame a maroon center field — same logic as the fraternity sticker but with circular ring text and gold ring. <strong>Highest PIKE DNA, most fraternity-forward.</strong></p>
+  </div>
+
+  <!-- CONCEPT B: THE MAJOR -->
+  <div class="concept">
+    <div class="concept-badge on-parchment">
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer / inner rings -->
+        <circle cx="140" cy="140" r="128" fill="#5b191c"/>
+        <circle cx="140" cy="140" r="120" fill="#5b191c" stroke="#d9a62e" stroke-width="1"/>
+        <circle cx="140" cy="140" r="110" fill="#5b191c" stroke="#d9a62e" stroke-width=".5" opacity=".5"/>
+
+        <!-- inner parchment field -->
+        <circle cx="140" cy="140" r="96" fill="#f2e4c0"/>
+
+        <!-- top arc text -->
+        <path id="topB" d="M 140 140 m -100 0 a 100 100 0 0 1 200 0" fill="none"/>
+        <text font-family="'Cormorant Garamond',serif" font-weight="700" font-size="11.5" letter-spacing="4" fill="#e9c258">
+          <textPath href="#topB" startOffset="50%" text-anchor="middle">THE  1813  CLASSIC</textPath>
+        </text>
+
+        <!-- bottom arc text -->
+        <path id="botB" d="M 140 140 m -100 0 a 100 100 0 0 0 200 0" fill="none"/>
+        <text font-family="'Oswald',sans-serif" font-size="8" letter-spacing="3.5" fill="#e9c258" opacity=".9">
+          <textPath href="#botB" startOffset="50%" text-anchor="middle">GIANTS  RIDGE  ·  MINNESOTA</textPath>
+        </text>
+
+        <!-- separator dots on ring -->
+        <circle cx="40" cy="140" r="2.5" fill="#d9a62e"/>
+        <circle cx="240" cy="140" r="2.5" fill="#d9a62e"/>
+
+        <!-- centered Minnesota flag mark on parchment -->
+        <!-- sunburst rays behind -->
+        <g transform="translate(140,134)" stroke="#c9a240" stroke-width="1" opacity=".35">
+          <line x1="0" y1="-58" x2="0" y2="-72"/>
+          <line x1="0" y1="58" x2="0" y2="72"/>
+          <line x1="-58" y1="0" x2="-72" y2="0"/>
+          <line x1="58" y1="0" x2="72" y2="0"/>
+          <line x1="-41" y1="-41" x2="-51" y2="-51"/>
+          <line x1="41" y1="-41" x2="51" y2="-51"/>
+          <line x1="-41" y1="41" x2="-51" y2="51"/>
+          <line x1="41" y1="41" x2="51" y2="51"/>
+          <line x1="-20" y1="-55" x2="-26" y2="-68"/>
+          <line x1="20" y1="-55" x2="26" y2="-68"/>
+          <line x1="-55" y1="-20" x2="-68" y2="-26"/>
+          <line x1="55" y1="-20" x2="68" y2="-26"/>
+          <line x1="-20" y1="55" x2="-26" y2="68"/>
+          <line x1="20" y1="55" x2="26" y2="68"/>
+          <line x1="-55" y1="20" x2="-68" y2="26"/>
+          <line x1="55" y1="20" x2="68" y2="26"/>
+        </g>
+
+        <!-- MN silhouette (simplified) -->
+        <g transform="translate(140,128)">
+          <!-- crossed golf clubs -->
+          <g stroke="#5b191c" stroke-width="3.5" stroke-linecap="round" opacity=".9">
+            <!-- club 1: top-left to bottom-right -->
+            <line x1="-22" y1="-28" x2="18" y2="30"/>
+            <!-- club 2: top-right to bottom-left -->
+            <line x1="22" y1="-28" x2="-18" y2="30"/>
+          </g>
+          <!-- club heads -->
+          <ellipse cx="18" cy="30" rx="10" ry="5" transform="rotate(-30 18 30)" fill="#5b191c" opacity=".9"/>
+          <ellipse cx="-18" cy="30" rx="10" ry="5" transform="rotate(30 -18 30)" fill="#5b191c" opacity=".9"/>
+          <!-- flag pole center -->
+          <rect x="-1.5" y="-36" width="3" height="42" rx="1.5" fill="#5b191c"/>
+          <!-- pennant -->
+          <path d="M1.5 -36 L22 -28 L1.5 -20 Z" fill="#5b191c"/>
+        </g>
+
+        <!-- year at bottom of inner field -->
+        <text x="140" y="218" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="10" letter-spacing="5" fill="#5b191c" opacity=".7">AUG · MMXXVI</text>
+      </svg>
+    </div>
+    <p class="concept-label">Concept B</p>
+    <p class="concept-name">The Major</p>
+    <p class="concept-desc">A proper major championship seal. Maroon ring with gold arc text, parchment interior with crossed clubs and a flag. Augusta DNA — the outer-ring-inner-field format is how the Masters, U.S. Open, and The Open all do it. <strong>Cleanest, most "official tournament" feel.</strong></p>
+  </div>
+
+  <!-- CONCEPT C: CREST EVOLVED -->
+  <div class="concept">
+    <div class="concept-badge on-dark">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- dark background with subtle texture dots -->
+
+        <!-- tall shield -->
+        <path d="M28 68 Q28 30 66 30 L214 30 Q252 30 252 68 L252 200 Q252 290 140 316 Q28 290 28 200 Z" fill="#d9a62e"/>
+        <path d="M36 70 Q36 38 70 38 L210 38 Q244 38 244 70 L244 200 Q244 286 140 310 Q36 286 36 200 Z" fill="#5b191c"/>
+
+        <!-- helmet top (simplified, stylized) -->
+        <g transform="translate(140,76)">
+          <!-- visor shape -->
+          <ellipse cx="0" cy="0" rx="28" ry="22" fill="#d9a62e"/>
+          <ellipse cx="0" cy="0" rx="22" ry="17" fill="#5b191c"/>
+          <!-- visor slits -->
+          <rect x="-16" y="-3" width="32" height="3" rx="1.5" fill="#d9a62e" opacity=".7"/>
+          <rect x="-14" y="3" width="28" height="2.5" rx="1.2" fill="#d9a62e" opacity=".5"/>
+          <!-- plume -->
+          <path d="M-4 -22 Q0 -50 8 -60 Q12 -50 10 -38 Q8 -28 4 -22 Z" fill="#d9a62e"/>
+          <path d="M-10 -20 Q-8 -46 0 -56 Q4 -48 2 -36 Q0 -28 -4 -22 Z" fill="#c8921a"/>
+        </g>
+
+        <!-- sunburst rays behind shield interior -->
+        <g transform="translate(140,175)" stroke="#c8921a" stroke-width="1" opacity=".25">
+          <line x1="0" y1="-90" x2="0" y2="-110"/>
+          <line x1="0" y1="90" x2="0" y2="110"/>
+          <line x1="-90" y1="0" x2="-110" y2="0"/>
+          <line x1="90" y1="0" x2="110" y2="0"/>
+          <line x1="-64" y1="-64" x2="-78" y2="-78"/>
+          <line x1="64" y1="-64" x2="78" y2="-78"/>
+          <line x1="-64" y1="64" x2="-78" y2="78"/>
+          <line x1="64" y1="64" x2="78" y2="78"/>
+          <line x1="-34" y1="-84" x2="-42" y2="-102"/>
+          <line x1="34" y1="-84" x2="42" y2="-102"/>
+          <line x1="-84" y1="-34" x2="-102" y2="-42"/>
+          <line x1="84" y1="-34" x2="102" y2="-42"/>
+          <line x1="-34" y1="84" x2="-42" y2="102"/>
+          <line x1="34" y1="84" x2="42" y2="102"/>
+          <line x1="-84" y1="34" x2="-102" y2="42"/>
+          <line x1="84" y1="34" x2="102" y2="42"/>
+        </g>
+
+        <!-- scroll banners (PIKE style) flanking -->
+        <!-- left scroll -->
+        <path d="M44 138 Q62 132 62 148 Q62 160 44 158 Z" fill="#c8921a" opacity=".6"/>
+        <!-- right scroll -->
+        <path d="M236 138 Q218 132 218 148 Q218 160 236 158 Z" fill="#c8921a" opacity=".6"/>
+
+        <!-- ΠΚΑ inner shield -->
+        <rect x="110" y="135" width="60" height="72" rx="4" fill="#d9a62e"/>
+        <rect x="114" y="139" width="52" height="64" rx="3" fill="#5b191c"/>
+        <!-- dagger -->
+        <rect x="138.5" y="148" width="3" height="36" rx="1.5" fill="#d9a62e"/>
+        <path d="M140 145 L144 152 L140 155 L136 152 Z" fill="#d9a62e"/>
+        <ellipse cx="140" cy="187" rx="5" ry="2.5" fill="#d9a62e" opacity=".7"/>
+        <!-- ΠΚΑ text -->
+        <text x="140" y="158" text-anchor="middle" font-family="serif" font-size="13" font-weight="700" fill="#d9a62e" letter-spacing=".5">πΚΑ</text>
+
+        <!-- lily of the valley sprigs at base -->
+        <!-- left sprig -->
+        <g transform="translate(86,240)">
+          <path d="M0 0 Q-8 -20 -4 -36" stroke="#c8921a" stroke-width="1.5" fill="none" opacity=".7"/>
+          <ellipse cx="-4" cy="-24" rx="5" ry="4" transform="rotate(-20 -4 -24)" fill="#f9f3e3" opacity=".5"/>
+          <ellipse cx="-6" cy="-32" rx="4" ry="3.5" transform="rotate(-30 -6 -32)" fill="#f9f3e3" opacity=".4"/>
+          <path d="M0 0 Q-14 -12 -16 -28" stroke="#c8921a" stroke-width="1.5" fill="none" opacity=".7"/>
+          <ellipse cx="-12" cy="-18" rx="5" ry="3.5" transform="rotate(-50 -12 -18)" fill="#f9f3e3" opacity=".5"/>
+        </g>
+        <!-- right sprig -->
+        <g transform="translate(194,240) scale(-1,1)">
+          <path d="M0 0 Q-8 -20 -4 -36" stroke="#c8921a" stroke-width="1.5" fill="none" opacity=".7"/>
+          <ellipse cx="-4" cy="-24" rx="5" ry="4" transform="rotate(-20 -4 -24)" fill="#f9f3e3" opacity=".5"/>
+          <ellipse cx="-6" cy="-32" rx="4" ry="3.5" transform="rotate(-30 -6 -32)" fill="#f9f3e3" opacity=".4"/>
+          <path d="M0 0 Q-14 -12 -16 -28" stroke="#c8921a" stroke-width="1.5" fill="none" opacity=".7"/>
+          <ellipse cx="-12" cy="-18" rx="5" ry="3.5" transform="rotate(-50 -12 -18)" fill="#f9f3e3" opacity=".5"/>
+        </g>
+
+        <!-- crossed golf clubs overlapping base -->
+        <g transform="translate(140,248)" stroke="#f9f3e3" stroke-width="2.5" stroke-linecap="round" opacity=".55">
+          <line x1="-30" y1="-20" x2="24" y2="24"/>
+          <line x1="30" y1="-20" x2="-24" y2="24"/>
+          <ellipse cx="24" cy="24" rx="8" ry="4" transform="rotate(-35 24 24)" fill="#f9f3e3" opacity=".5" stroke="none"/>
+          <ellipse cx="-24" cy="24" rx="8" ry="4" transform="rotate(35 -24 24)" fill="#f9f3e3" opacity=".5" stroke="none"/>
+        </g>
+
+        <!-- ribbon banner -->
+        <path d="M20 265 L54 278 L54 296 L20 309 Z" fill="#2f1a0e"/>
+        <path d="M260 265 L226 278 L226 296 L260 309 Z" fill="#2f1a0e"/>
+        <rect x="42" y="270" width="196" height="36" fill="#3a2012"/>
+        <line x1="50" y1="276" x2="230" y2="276" stroke="#d9a62e" stroke-width="1.2"/>
+        <line x1="50" y1="300" x2="230" y2="300" stroke="#d9a62e" stroke-width="1.2"/>
+        <text x="140" y="294" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="700" font-size="20" letter-spacing="4" fill="#e9c258">1813 CLASSIC</text>
+      </svg>
+    </div>
+    <p class="concept-label">Concept C</p>
+    <p class="concept-name">The Crest</p>
+    <p class="concept-desc">Full PIKE heraldic treatment — knight helmet, sunburst, ΠΚΑ dagger shield, lily of the valley sprigs adapted with crossed golf clubs, ribbon banner. Closest to the actual PIKE emblem. <strong>Most ornate, best as a printed item or embroidered patch.</strong></p>
+  </div>
+
+  <!-- CONCEPT D: THE WORDMARK -->
+  <div class="concept">
+    <div class="concept-badge on-parchment">
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- parchment field -->
+        <rect width="280" height="280" fill="#f2e4c0" rx="6"/>
+
+        <!-- top rule system -->
+        <line x1="30" y1="58" x2="250" y2="58" stroke="#d9a62e" stroke-width="2"/>
+        <line x1="30" y1="64" x2="250" y2="64" stroke="#d9a62e" stroke-width=".5"/>
+
+        <!-- super label -->
+        <text x="140" y="50" text-anchor="middle" font-family="'Oswald',sans-serif" font-size="8" letter-spacing="4" fill="#5b191c" opacity=".7">PI KAPPA ALPHA  ·  CHAPTER 1813</text>
+
+        <!-- diamond rule mark -->
+        <text x="140" y="90" text-anchor="middle" font-family="serif" font-size="11" fill="#d9a62e">&#9670;</text>
+
+        <!-- big "1813" -->
+        <text x="140" y="158" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="700" font-size="82" letter-spacing="-1" fill="#5b191c">1813</text>
+
+        <!-- sub diamond -->
+        <text x="140" y="180" text-anchor="middle" font-family="serif" font-size="11" fill="#d9a62e">&#9670;</text>
+
+        <!-- CLASSIC -->
+        <text x="140" y="206" text-anchor="middle" font-family="'Oswald',sans-serif" font-weight="500" font-size="16" letter-spacing="10" fill="#5b191c">CLASSIC</text>
+
+        <!-- bottom rule system -->
+        <line x1="30" y1="216" x2="250" y2="216" stroke="#d9a62e" stroke-width=".5"/>
+        <line x1="30" y1="222" x2="250" y2="222" stroke="#d9a62e" stroke-width="2"/>
+
+        <!-- venue + date -->
+        <text x="140" y="244" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="11" letter-spacing="1" fill="#5b191c" opacity=".65">Giants Ridge, Minnesota</text>
+        <text x="140" y="260" text-anchor="middle" font-family="'Oswald',sans-serif" font-size="8" letter-spacing="3.5" fill="#5b191c" opacity=".5">AUGUST · MMXXVI</text>
+      </svg>
+    </div>
+    <p class="concept-label">Concept D</p>
+    <p class="concept-name">The Wordmark</p>
+    <p class="concept-desc">Channel the PIKE SLAG identity — all type, no illustration. Big maroon "1813" does all the work; "CLASSIC" sits in spaced Oswald caps below. Clean, confident, prints cleanly on any surface. <strong>Most versatile: scorecards, koozies, shirts, hats.</strong></p>
+  </div>
+
+</div>
+
+<h2 class="divider">Notes</h2>
+<p style="max-width:640px;margin:0 auto;text-align:center;color:#7a6848;font-size:.88rem;line-height:1.8">
+  All concepts use the same maroon/gold/parchment palette as the current site.
+  Concepts A and C lean into PIKE fraternity heraldry. B and D are tournament-forward and produce cleaner merch.
+  The current site badge is closest to C — any of these could replace or supplement it.
+</p>
+
+</body>
+</html>
