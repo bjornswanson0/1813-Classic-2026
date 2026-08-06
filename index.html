@@ -38,7 +38,9 @@
   [hidden]{display:none!important}
   html{scroll-behavior:smooth}
   body{
-    background:var(--parchment);
+    background:
+      radial-gradient(rgba(91,25,28,.05) 2.5px, transparent 2.6px) 0 0/56px 56px,
+      var(--parchment);
     color:var(--ink);
     font-family:'Source Sans 3',sans-serif;
     font-size:17px;
@@ -121,10 +123,16 @@
 
   /* ---------- NAV ---------- */
   nav{
-    position:sticky;top:0;z-index:50;
+    position:sticky;top:10px;z-index:50;
     background:var(--maroon-deep);
-    border-bottom:2px solid var(--gold);
-    display:flex;justify-content:center;flex-wrap:wrap;
+    border:1px solid var(--gold);
+    border-radius:999px;
+    box-shadow:0 10px 26px rgba(61,13,16,.3);
+    display:flex;justify-content:center;flex-wrap:nowrap;
+    width:fit-content;max-width:calc(100% - 24px);
+    margin:-24px auto 0;
+    padding:0 10px;
+    overflow-x:auto;
   }
   nav a{
     font-family:'Oswald',sans-serif;
@@ -557,9 +565,9 @@
   /* anchor offset under sticky nav */
   section{scroll-margin-top:58px}
 
-  /* mobile nav: single scrollable row */
-  @media (max-width:640px){
-    nav{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+  /* narrow screens: the pill becomes a single scrollable row */
+  @media (max-width:1100px){
+    nav{justify-content:flex-start;
         -webkit-overflow-scrolling:touch;scrollbar-width:none}
     nav::-webkit-scrollbar{display:none}
     nav a{flex:none}
