@@ -27,6 +27,7 @@
     --maroon-deep:#3d0d10;
     --gold:#d9a62e;
     --gold-bright:#e9c258;
+    --gold-deep:#8f6a12;
     --parchment:#f9f3e3;
     --parchment-deep:#efe4c8;
     --bark:#3a2012;
@@ -148,7 +149,7 @@
     text-transform:uppercase;
     letter-spacing:.3em;
     font-size:.72rem;
-    color:var(--gold);
+    color:var(--gold-deep);
     margin-bottom:6px;
     display:flex;justify-content:center;align-items:center;gap:12px;
   }
@@ -234,7 +235,7 @@
   }
   .golfer .g-nick{
     font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:.95rem;color:var(--gold);margin:2px 0 6px;
+    font-size:.95rem;color:var(--gold-deep);margin:2px 0 6px;
   }
   .golfer .g-stats{
     font-family:'Oswald',sans-serif;font-size:.68rem;
@@ -246,7 +247,7 @@
   .flip-hint{
     margin-top:auto;
     font-family:'Oswald',sans-serif;font-size:.6rem;
-    letter-spacing:.18em;text-transform:uppercase;color:#b49668;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);
   }
   .sr-eyebrow{
     font-family:'Oswald',sans-serif;font-size:.62rem;
@@ -389,7 +390,7 @@
   }
   .cal-day:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(91,25,28,.14)}
   .cal-day:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .cal-dow{display:block;font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .cal-dow{display:block;font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep)}
   .cal-num{display:block;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2rem;line-height:1.15;color:var(--maroon)}
   .cal-tag{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.84rem;color:#6f5c44;line-height:1.25}
   .cal-day[aria-selected="true"]{
@@ -1089,12 +1090,12 @@
     <h2>Format &amp; Scoring</h2>
     <p class="sub">Forty points on the board across four rounds. First team to 20½ wins the weekend.</p>
 
-    <div class="leaderboard" role="table" aria-label="Points by round">
+    <div class="leaderboard" role="group" aria-label="Points by round">
       <div class="lb-title">Official <span>Scoreboard</span> &middot; Points by Round</div>
-      <div class="lb-row" role="row"><div class="fmt">Two-Man Best Ball<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Quarry</div><div class="pts">10 PTS</div></div>
-      <div class="lb-row" role="row"><div class="fmt">Two-Man Scramble<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Legends</div><div class="pts">10 PTS</div></div>
-      <div class="lb-row" role="row"><div class="fmt">Alternate Shot<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Quarry</div><div class="pts">10 PTS</div></div>
-      <div class="lb-row" role="row"><div class="fmt">Singles Match Play<small>Win 1 · Tie ½ · Loss 0, per match</small></div><div class="course">The Legends</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row"><div class="fmt">Two-Man Best Ball<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Quarry</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row"><div class="fmt">Two-Man Scramble<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Legends</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row"><div class="fmt">Alternate Shot<small>Win 2 · Tie 1 · Loss 0, per match</small></div><div class="course">The Quarry</div><div class="pts">10 PTS</div></div>
+      <div class="lb-row"><div class="fmt">Singles Match Play<small>Win 1 · Tie ½ · Loss 0, per match</small></div><div class="course">The Legends</div><div class="pts">10 PTS</div></div>
       <div class="lb-total"><span>Total on offer &middot; First to <b>20.5</b> wins</span><b>40 PTS</b></div>
     </div>
 
@@ -1120,10 +1121,10 @@
            placeholder scoreboard below with the embed snippet from the app,
            e.g. <iframe src="SQUABBIT_EMBED_URL" loading="lazy" title="1813 Classic live leaderboard"></iframe>
            The iframe styling is already in the stylesheet (.lb-embed iframe). -->
-      <div class="leaderboard" role="table" aria-label="Team standings — awaiting the draft">
+      <div class="leaderboard" role="group" aria-label="Team standings — awaiting the draft">
         <div class="lb-title">1813 Classic <span>Live Standings</span></div>
-        <div class="lb-row" role="row"><div class="fmt">Team One<small>Roster drafted Thursday night</small></div><div class="course">Captain TBD</div><div class="pts">0 PTS</div></div>
-        <div class="lb-row" role="row"><div class="fmt">Team Two<small>Roster drafted Thursday night</small></div><div class="course">Captain TBD</div><div class="pts">0 PTS</div></div>
+        <div class="lb-row"><div class="fmt">Team One<small>Roster drafted Thursday night</small></div><div class="course">Captain TBD</div><div class="pts">0 PTS</div></div>
+        <div class="lb-row"><div class="fmt">Team Two<small>Roster drafted Thursday night</small></div><div class="course">Captain TBD</div><div class="pts">0 PTS</div></div>
         <div class="lb-total"><span>First to <b>20.5</b> takes the trophy</span><b>AUG 6</b></div>
       </div>
     </div>
